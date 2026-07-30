@@ -22,14 +22,14 @@ Copy `.env.example` to `.env.local` and adjust values as needed.
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Start Turbopack dev server |
-| `pnpm build` | Production build |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm format` | Format with Prettier |
-| `pnpm typecheck` | TypeScript check |
+| Command          | Description                |
+| ---------------- | -------------------------- |
+| `pnpm dev`       | Start Turbopack dev server |
+| `pnpm build`     | Production build           |
+| `pnpm start`     | Start production server    |
+| `pnpm lint`      | Run ESLint                 |
+| `pnpm format`    | Format with Prettier       |
+| `pnpm typecheck` | TypeScript check           |
 
 ## Project structure
 

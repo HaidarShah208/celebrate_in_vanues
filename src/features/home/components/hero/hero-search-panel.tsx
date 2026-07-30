@@ -15,24 +15,34 @@ export function HeroSearchPanel() {
 
   return (
     <div className="mx-auto w-full max-w-[1054px]">
-      <HeroSearchTabs activeTab={activeTab} onTabChange={setActiveTab} />
+      {/*
+        On small screens one white card holds the tabs and the fields. From `lg`
+        the outer card turns transparent so the tab pill floats above the inner
+        field card, overlapping its top edge by 17px.
+      */}
+      <div className="bg-surface-white rounded-lg p-4 lg:bg-transparent lg:p-0">
+        <HeroSearchTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* Pulled up so the tab pill overlaps the card by 17px, as designed. */}
-      <div className="bg-surface-white -mt-[17px] rounded-lg p-4 pt-6 lg:h-[100px] lg:px-[14px] lg:py-0">
-        <div className="flex h-full flex-col gap-2 lg:flex-row lg:items-center lg:gap-[10px]">
-          <div className="divide-border flex flex-col divide-y lg:contents lg:divide-y-0">
-            {HERO_SEARCH_FIELDS.map(({ id, label, value }) => (
-              <HeroSearchField key={id} label={label} value={value} />
-            ))}
+        <div className="lg:bg-surface-white mt-2 lg:-mt-[17px] lg:h-[100px] lg:rounded-lg lg:px-[14px] lg:py-0">
+          <div className="flex h-full flex-col gap-2 lg:flex-row lg:items-center lg:gap-[10px]">
+            <div className="divide-border flex flex-col divide-y lg:contents lg:divide-y-0">
+              {HERO_SEARCH_FIELDS.map(({ id, label, value }) => (
+                <HeroSearchField key={id} label={label} value={value} />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="bg-brand-red text-surface-white flex h-[50px] w-full shrink-0 items-center justify-center gap-[10px] rounded-lg px-[14px] text-base leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 lg:h-[61px] lg:w-[147px] lg:text-2xl"
+            >
+              <Search
+                className="size-5 shrink-0 lg:size-6"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+              Search
+            </button>
           </div>
-
-          <button
-            type="button"
-            className="bg-brand-red text-surface-white flex h-[61px] w-full shrink-0 items-center justify-center gap-[10px] rounded-lg px-[14px] text-2xl leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 lg:w-[147px]"
-          >
-            <Search className="size-6 shrink-0" strokeWidth={1.5} aria-hidden />
-            Search
-          </button>
         </div>
       </div>
     </div>

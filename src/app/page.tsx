@@ -1,5 +1,6 @@
 import { CategoriesSection } from "@/features/home/components/categories/categories-section";
 import { GrowBusinessBanner } from "@/features/home/components/cta/grow-business-banner";
+import { ListVenueBanner } from "@/features/home/components/cta/list-venue-banner";
 import { DestinationsSection } from "@/features/home/components/destinations/destinations-section";
 import { FeaturedVenuesSection } from "@/features/home/components/featured/featured-venues-section";
 import { HeroSection } from "@/features/home/components/hero/hero-section";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <VenueJourneySection />
       <TrustedSection />
       <DestinationsSection />
+      <ListVenueBanner />
     </main>
   );
 }

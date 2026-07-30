@@ -35,12 +35,14 @@ export function CardCarousel({
     <div className={cn("flex flex-col gap-6", className)}>
       <div
         ref={scrollerRef}
-        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto"
+        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain scroll-smooth"
       >
         {children}
       </div>
 
+      {/* Phones page these by swiping, so the arrows would only take up room. */}
       <CarouselArrows
+        className="hidden sm:flex"
         label={label}
         tone={tone}
         canScrollBack={canScrollBack}

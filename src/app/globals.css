@@ -51,6 +51,9 @@
   --field-arrow: #807d8d;
   --control-chevron: #6b7280;
   --dot-idle: #d9d9d9;
+  /* Unselected segmented-control tab, as used by the mobile hero search tabs */
+  --control-idle: #edeef2;
+  --control-idle-label: #5e5e5e;
 
   /* --- Neutrals ---------------------------------------------------------- */
   --neutral-100: #f5f5f5;
@@ -194,6 +197,8 @@
   --color-field-arrow: var(--field-arrow);
   --color-control-chevron: var(--control-chevron);
   --color-dot-idle: var(--dot-idle);
+  --color-control-idle: var(--control-idle);
+  --color-control-idle-label: var(--control-idle-label);
 
   /* Semantic */
   --color-background: var(--background);

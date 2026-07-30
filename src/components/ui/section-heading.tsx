@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const TITLE_TONES = {
-  light: "text-foreground",
+  light: "text-black",
   dark: "text-surface-white",
 } as const;
 
@@ -42,7 +42,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "text-sm leading-[1.6] font-normal sm:text-base lg:text-lg",
+            "text-sm leading-[1.6] text-black sm:text-base lg:text-xl",
             DESCRIPTION_TONES[tone],
           )}
         >

@@ -1,4 +1,5 @@
 import businessVenueIllustration from "@/assets/home/business vanue.svg";
+import destinationIllustration from "@/assets/home/destination.svg";
 import type { PromoBannerContent } from "@/components/ui/promo-banner";
 
 export const GROW_BUSINESS_PROMO: PromoBannerContent = {
@@ -7,4 +8,17 @@ export const GROW_BUSINESS_PROMO: PromoBannerContent = {
     "Showcase your services to thousands of event organizers and creators searching for talent like yours.",
   actionLabel: "Join as a Vendor",
   illustration: businessVenueIllustration,
+  curveArrowClassName: "right-[563px] bottom-[74px]",
+};
+
+export const LIST_VENUE_PROMO: PromoBannerContent = {
+  title: "Turn Your Venue into a Destination",
+  description:
+    "List your space on Venuze and unlock new revenue opportunities. Reach clients looking for venues just like yours.",
+  actionLabel: "List Your Venue",
+  illustration: destinationIllustration,
+  /* Narrower artwork than the vendor promo, so it needs its own widths. */
+  illustrationClassName:
+    "w-[64%] max-w-[380px] lg:w-[330px] lg:max-w-none xl:w-[410px]",
+  curveArrowClassName: "right-[475px] bottom-[34px]",
 };

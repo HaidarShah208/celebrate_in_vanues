@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Poppins } from "next/font/google";
 
+import { SiteFooter } from "@/components/layout/site-footer";
 import { AppProviders } from "@/components/providers/app-providers";
 import { themeInitScript } from "@/components/providers/theme-provider";
 import { siteConfig } from "@/config/site";
@@ -69,7 +70,10 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${geistMono.variable} flex min-h-full flex-col antialiased`}
       >
-        <AppProviders>{children}</AppProviders>
+        <AppProviders>
+          {children}
+          <SiteFooter />
+        </AppProviders>
       </body>
     </html>
   );

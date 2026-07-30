@@ -27,7 +27,12 @@ export function HeroSearchTabs({
     <div
       role="tablist"
       aria-label="Search type"
-      className="bg-surface-white shadow-panel relative z-10 mx-auto flex h-[55px] w-[264px] items-center gap-[10px] rounded-lg p-[7px]"
+      className={cn(
+        // Small screens: two equal tabs spanning the search card.
+        "relative z-10 flex items-center gap-2",
+        // From lg: a floating 264px pill overlapping the card beneath it.
+        "lg:bg-surface-white lg:shadow-panel lg:mx-auto lg:h-[55px] lg:w-[264px] lg:gap-[10px] lg:rounded-lg lg:p-[7px]",
+      )}
     >
       {HERO_SEARCH_TABS.map(({ id, label }) => {
         const Icon = TAB_ICONS[id];
@@ -41,10 +46,11 @@ export function HeroSearchTabs({
             aria-selected={isActive}
             onClick={() => onTabChange(id)}
             className={cn(
-              "flex h-10 flex-1 items-center justify-center gap-[7px] rounded-lg text-sm leading-[21px] font-semibold transition-colors",
+              "flex h-11 flex-1 items-center justify-center gap-[7px] rounded-lg text-sm leading-[21px] font-semibold transition-colors lg:h-10",
               isActive
                 ? "bg-brand-red text-surface-white"
-                : "text-surface-ink hover:bg-muted",
+                : // Filled on small screens, bare once it sits inside the pill.
+                  "bg-control-idle text-control-idle-label lg:text-surface-ink lg:hover:bg-muted lg:bg-transparent",
             )}
           >
             <Icon className="size-5 shrink-0" strokeWidth={2} aria-hidden />

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Hashed",
+  name: "Venuze",
   description:
     "Production-ready Next.js application with a scalable frontend architecture.",
   url: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",

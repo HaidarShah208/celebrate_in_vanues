@@ -4,7 +4,7 @@ import { DESTINATIONS } from "@/features/home/data/destinations";
 
 export function DestinationsSection() {
   return (
-    <section className="bg-background py-14 sm:py-16 lg:py-20">
+    <section className="bg-white py-14 sm:py-16 lg:py-20">
       <div className="container-frame px-4 sm:px-6 lg:px-20">
         <SectionHeading
           title="Discover Exceptional Destinations Across the Region"
