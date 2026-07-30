@@ -4,16 +4,17 @@ import { ChevronDownMini, UserMini } from "@/components/ui/icons";
 import { Logo, LogoMark } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 
+/* Control labels read black on small screens and brand red from lg. */
 const CONTROL_BASE =
-  "flex h-10 items-center justify-center rounded-lg bg-surface-white text-sm leading-[140%] font-semibold text-brand-red";
+  "flex h-10 items-center justify-center rounded-lg bg-surface-white text-sm leading-[140%] font-semibold text-surface-ink lg:text-brand-red";
 
 export function HeroTopBar() {
   return (
     <header className="bg-topbar-scrim absolute inset-x-0 top-0 z-20 h-[88px]">
       <div className="container-frame flex h-full items-center justify-between px-4 sm:px-6 lg:pr-[26px] lg:pl-[17px]">
         {/* The wordmark is dropped on small screens; the mark carries the brand. */}
-        <LogoMark className="w-10 lg:hidden" />
-        <Logo className="hidden lg:flex" />
+        <LogoMark priority className="w-10 lg:hidden" />
+        <Logo priority className="hidden lg:flex" />
 
         <nav
           aria-label="Account"

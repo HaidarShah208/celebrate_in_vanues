@@ -20,10 +20,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-12 xl:flex-row xl:justify-between xl:gap-10">
           <div className="xl:flex-1">
             <div className="flex items-start gap-4">
-              <LogoMark
-                gradientId="venuze-mark-footer"
-                className="w-[52px] lg:w-[70px]"
-              />
+              <LogoMark className="w-[52px] lg:w-[70px]" />
               <p className="max-w-[570px] text-xl leading-[1.6] font-bold sm:text-2xl sm:leading-[1.85]">
                 {FOOTER_TAGLINE}
               </p>

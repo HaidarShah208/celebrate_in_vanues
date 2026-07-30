@@ -63,13 +63,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    // The font variables must land on :root, because globals.css resolves
+    // `--font-sans: var(--font-poppins)` there. On <body> they would be out of
+    // scope and every `var(--font-sans)` lookup would fall back to system sans.
+    <html
+      lang="en"
+      className={`${poppins.variable} ${geistMono.variable} h-full`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body
-        className={`${poppins.variable} ${geistMono.variable} flex min-h-full flex-col antialiased`}
-      >
+      <body className="flex min-h-full flex-col antialiased">
         <AppProviders>
           {children}
           <SiteFooter />

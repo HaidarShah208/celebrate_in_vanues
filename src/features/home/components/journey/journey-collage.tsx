@@ -17,7 +17,7 @@ function CollageColumn({
       {photos.map((photo, index) => (
         <div
           key={index}
-          className="relative aspect-[7/5] w-full overflow-hidden rounded-lg"
+          className="relative aspect-7/5 w-full overflow-hidden rounded-lg"
         >
           <Image
             src={photo}
@@ -41,7 +41,7 @@ export function JourneyCollage() {
     <div
       // Decorative supporting imagery: the section's meaning lives in the steps.
       aria-hidden
-      className="border-frame-gold relative rounded-md border-[3px] p-1"
+      className="border-frame-gold relative rounded-md p-1"
     >
       <div className="grid grid-cols-2 gap-3">
         {/*
@@ -59,11 +59,11 @@ export function JourneyCollage() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="bg-surface-white shadow-panel flex size-20 items-center justify-center rounded-full lg:size-[150px]">
+        <span className="bg-surface-white shadow-panel flex size-20 items-center justify-center rounded-full lg:size-37.5">
           <Image
             src={perfectVenueMark}
             alt=""
-            className="h-auto w-9 lg:w-[70px]"
+            className="h-auto w-9 lg:w-17.5"
           />
         </span>
       </div>

@@ -27,13 +27,13 @@ export function SectionHeading({
   return (
     <header
       className={cn(
-        "mx-auto flex max-w-[1190px] flex-col items-center gap-3 text-center",
+        "mx-auto flex max-w-297.5 flex-col items-center gap-3 text-center",
         className,
       )}
     >
       <h2
         className={cn(
-          "text-[26px] leading-[1.2] font-bold tracking-[-0.02em] sm:text-[34px] lg:text-[44px]",
+          "text-2xl leading-[1.2] font-semibold tracking-[-0.02em] lg:text-[44px]",
           TITLE_TONES[tone],
         )}
       >
@@ -42,7 +42,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "text-sm leading-[1.6] text-black sm:text-base lg:text-xl",
+            "text-sm leading-[1.6] font-normal lg:text-xl",
             DESCRIPTION_TONES[tone],
           )}
         >
