@@ -164,7 +164,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
 
         {/* One wrapping row: the three chips total 253px so "+N more" wraps to a
             second line on its own, matching the two rows in the design. */}
-        <ul className="mt-[8px] flex flex-wrap items-center gap-x-[5px] gap-y-[7px]">
+        <ul className="mt-[8px] mb-[21px] flex flex-wrap items-center gap-x-[5px] gap-y-[7px]">
           <AmenityChip
             icon={Users}
             iconClassName="size-[14px]"
@@ -183,7 +183,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
           <AmenityChip label={`+${venue.extraAmenities} more`} />
         </ul>
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-[17px]">
+        <div className="border-rule-card mt-auto flex items-center justify-between gap-2 border-t pt-[17px]">
           <p className="text-muted-foreground text-xs">
             From{" "}
             <span className="text-surface-ink text-[13px] font-semibold">

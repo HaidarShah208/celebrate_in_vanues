@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const ARROW_BASE =
-  "text-control-chevron hover:text-foreground hidden size-8 shrink-0 items-center justify-center transition-colors sm:flex";
+  "text-control-chevron   hidden size-8 shrink-0 items-center justify-center transition-colors sm:flex";
 
 type SpaceCategoriesProps = {
   query: SearchQuery;
@@ -92,7 +92,7 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
           onClick={() => scrollBy(1)}
           className={ARROW_BASE}
         >
-          <ArrowRight className="size-5" strokeWidth={1.5} aria-hidden />
+          <ArrowRight className="size-5" strokeWidth={2} aria-hidden />
         </button>
       </div>
     </div>

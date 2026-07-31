@@ -54,8 +54,9 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
   return (
     /* Padding comes from the results column that owns this row. */
     <div className="pt-4 pb-4">
-      {/* Count, chips and sort share one row; chips wrap before the sort pill. */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+      {/* Single row that never wraps: the count and the sort pill hold their
+          size and the chips take the slack, scrolling once they overflow. */}
+      <div className="flex items-center gap-x-4">
         <h1 className="text-surface-ink shrink-0 text-sm">
           {totalCount.toLocaleString()}{" "}
           <span className="font-semibold">{categoryLabel(query.category)}</span>{" "}
@@ -63,13 +64,13 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
         </h1>
 
         {chips.length > 0 ? (
-          <ul className="flex flex-wrap items-center gap-2">
+          <ul className="no-scrollbar flex min-w-0 flex-1 items-center gap-2 overflow-x-auto">
             {chips.map((chip) => (
-              <li key={chip.id}>
+              <li key={chip.id} className="shrink-0">
                 <button
                   type="button"
                   onClick={() => removeChip(chip.id)}
-                  className={`${PILL_BASE} hover:bg-muted gap-2 px-3.5 transition-colors`}
+                  className={`${PILL_BASE} gap-2 px-3.5 transition-colors`}
                 >
                   {chip.label}
                   <X className="text-control-chevron size-3.5" aria-hidden />
@@ -81,7 +82,7 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
         ) : null}
 
         <label
-          className={`${PILL_BASE} relative ml-auto gap-1.5 pr-3 pl-3.5`}
+          className={`${PILL_BASE} relative ml-auto shrink-0 gap-1.5 pr-3 pl-3.5`}
           aria-label="Sort results"
         >
           <ArrowUpDown className="size-3.5 shrink-0" aria-hidden />

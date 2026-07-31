@@ -62,6 +62,8 @@
   --rule-divider: #dfdfdf;
   /* Heavier rule under the search-page category strip */
   --rule-strong: #d0d0d0;
+  /* Rule above the price row inside a venue card */
+  --rule-card: #c5c5c5;
   /* Venue card: body outline and the filled amenity chips it contains */
   --card-hairline: #e5e5e5;
   --chip-fill: #f9fafb;
@@ -216,6 +218,7 @@
   --color-icon-idle: var(--icon-idle);
   --color-rule-divider: var(--rule-divider);
   --color-rule-strong: var(--rule-strong);
+  --color-rule-card: var(--rule-card);
   --color-card-hairline: var(--card-hairline);
   --color-chip-fill: var(--chip-fill);
   --color-chip-ink: var(--chip-ink);
