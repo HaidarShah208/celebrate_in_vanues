@@ -1,17 +1,10 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-
 type MediaCardProps = {
   title: string;
   image: StaticImageData;
-  /** Optional pill rendered in the top-left corner, e.g. "37 Venues". */
   badge?: string;
 };
-
-/**
- * Portrait image card with a bottom-anchored label. Shared by the venue
- * category and vendor category carousels.
- */
 export function MediaCard({ title, image, badge }: MediaCardProps) {
   return (
     <article className="group relative aspect-3/4 shrink-0 basis-[78%] snap-start overflow-hidden rounded-2xl sm:basis-[46%] lg:basis-[calc((100%-4.5rem)/4)]">

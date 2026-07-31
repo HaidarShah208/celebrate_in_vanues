@@ -1,35 +1,16 @@
-import type { StaticImageData } from "next/image";
-
 import imageStudio from "@/assets/home/1.png";
 import imageCorporate from "@/assets/home/2.png";
 import imageBanquet from "@/assets/home/3.png";
 import imageCelebration from "@/assets/home/4.png";
-import type { SearchQuery } from "@/features/search/lib/search-params";
-
-export type SearchVenue = {
-  id: string;
-  title: string;
-  location: string;
-  city: string;
-  guests: string;
-  area: string;
-  parking: string;
-  extraAmenities: number;
-  pricePerHour: number;
-  isVerified: boolean;
-  category: string;
-  lat: number;
-  lng: number;
-  gallery: readonly StaticImageData[];
-};
-
+import type { SearchQuery } from "@/types/search";
+import type { SearchVenue, SearchVenuesResult } from "@/types/venue";
+export type { SearchVenue, SearchVenuesResult } from "@/types/venue";
 const GALLERY_POOL = [
   imageBanquet,
   imageCorporate,
   imageStudio,
   imageCelebration,
 ] as const;
-
 const BASE_VENUES: readonly Omit<SearchVenue, "gallery">[] = [
   {
     id: "venue-1",
@@ -182,7 +163,6 @@ const BASE_VENUES: readonly Omit<SearchVenue, "gallery">[] = [
     lng: 55.267,
   },
 ];
-
 function withGalleries(): SearchVenue[] {
   return BASE_VENUES.map((venue, index) => ({
     ...venue,
@@ -192,27 +172,13 @@ function withGalleries(): SearchVenue[] {
     ],
   }));
 }
-
-export type SearchVenuesResult = {
-  venues: SearchVenue[];
-  totalCount: number;
-};
-
-/**
- * Mock listing fetch keyed off the URL search params. Swap for an API call
- * once the backend is ready — the page contract stays the same.
- */
 export async function getSearchVenues(
   query: SearchQuery,
 ): Promise<SearchVenuesResult> {
-  // Simulate a short network hop so `loading.tsx` is exercised in slow networks.
   await new Promise((resolve) => setTimeout(resolve, 80));
-
   const all = withGalleries();
   const locationSlug = query.location.toLowerCase();
-
   let venues = all;
-
   if (locationSlug) {
     const matched = all.filter(
       (venue) =>
@@ -223,14 +189,12 @@ export async function getSearchVenues(
         ? matched
         : all.filter((venue) => venue.city === "london");
   }
-
   if (query.category && query.category !== "all") {
     const matched = venues.filter((venue) => venue.category === query.category);
     if (matched.length > 0) {
       venues = matched;
     }
   }
-
   if (query.q) {
     const needle = query.q.toLowerCase();
     venues = venues.filter(
@@ -239,15 +203,11 @@ export async function getSearchVenues(
         venue.location.toLowerCase().includes(needle),
     );
   }
-
   if (query.sort === "price-asc") {
     venues = [...venues].sort((a, b) => a.pricePerHour - b.pricePerHour);
   } else if (query.sort === "price-desc") {
     venues = [...venues].sort((a, b) => b.pricePerHour - a.pricePerHour);
   }
-
-  // Design copy shows thousands of results; scale the mock count for the headline.
   const totalCount = venues.length > 0 ? 3456 : 0;
-
   return { venues, totalCount };
 }

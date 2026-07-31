@@ -1,16 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
 import { THEME_STORAGE_KEY } from "@/config/constants";
-import type { Theme } from "@/types";
-
+import type { Theme } from "@/types/theme";
 type ThemeState = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   resolvedTheme: "light" | "dark";
   setResolvedTheme: (theme: "light" | "dark") => void;
 };
-
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({

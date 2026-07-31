@@ -1,18 +1,11 @@
 "use client";
-
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-
 const TONES = {
-  /** For carousels on light section backgrounds. */
   light: "border-border bg-surface-white text-muted-foreground hover:bg-muted",
-  /** For carousels on dark/photographic section backgrounds. */
   dark: "border-surface-white/40 bg-surface-white/10 text-surface-white hover:bg-surface-white/20",
 } as const;
-
 type CarouselArrowsProps = {
-  /** Describes what is being paged, used for the accessible labels. */
   label: string;
   canScrollBack: boolean;
   canScrollForward: boolean;
@@ -21,7 +14,6 @@ type CarouselArrowsProps = {
   tone?: keyof typeof TONES;
   className?: string;
 };
-
 export function CarouselArrows({
   label,
   canScrollBack,
@@ -35,7 +27,6 @@ export function CarouselArrows({
     "flex size-12 items-center justify-center rounded-full border transition-colors disabled:pointer-events-none disabled:opacity-40",
     TONES[tone],
   );
-
   return (
     <div className={cn("flex items-center justify-end gap-3", className)}>
       <button

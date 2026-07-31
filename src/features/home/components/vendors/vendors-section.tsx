@@ -2,7 +2,6 @@ import { CardCarousel } from "@/components/ui/card-carousel";
 import { MediaCard } from "@/components/ui/media-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { VENDOR_CATEGORIES } from "@/features/home/data/vendors";
-
 export function VendorsSection() {
   return (
     <section className="bg-surface-cream py-14 sm:py-16 lg:py-20">

@@ -1,11 +1,8 @@
 import Image from "next/image";
-
-import type { Destination } from "@/features/home/data/destinations";
-
+import type { Destination } from "@/types/home";
 type DestinationCardProps = {
   destination: Destination;
 };
-
 export function DestinationCard({ destination }: DestinationCardProps) {
   return (
     <article className="group relative aspect-[5/6] overflow-hidden rounded-xl">
@@ -17,14 +14,12 @@ export function DestinationCard({ destination }: DestinationCardProps) {
         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
       />
 
-      {/* Ramps to solid black at the card's foot so the caption stays legible. */}
       <div className="from-surface-ink via-surface-ink/70 absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t to-transparent" />
 
       <span className="bg-surface-ink/30 text-surface-white absolute top-5 left-5 rounded-md px-2.5 py-1.5 text-xs leading-none font-normal backdrop-blur-sm">
         {destination.venueCount} Venues
       </span>
 
-      {/* The design insets the caption 20px on the left but 40px on the right. */}
       <div className="text-surface-white absolute inset-x-0 bottom-0 flex flex-col gap-1.5 px-5 pb-8 sm:pr-10">
         <h3 className="text-[26px] leading-[1.2] font-bold tracking-[-0.01em] lg:text-[30px]">
           {destination.city}

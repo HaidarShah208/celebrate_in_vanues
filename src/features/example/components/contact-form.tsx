@@ -1,16 +1,13 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   contactFormSchema,
   type ContactFormValues,
 } from "@/features/example/schemas/contact-form";
-
 export function ContactForm() {
   const {
     register,
@@ -25,7 +22,6 @@ export function ContactForm() {
       message: "",
     },
   });
-
   const onSubmit = async (values: ContactFormValues) => {
     await new Promise((resolve) => setTimeout(resolve, 600));
     toast.success("Form submitted", {
@@ -33,7 +29,6 @@ export function ContactForm() {
     });
     reset();
   };
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

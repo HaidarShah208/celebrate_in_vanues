@@ -2,33 +2,23 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ==========================================================================
-   Venuze design tokens
-   Values taken from the Figma spec. Only these tokens may be used —
-   no ad-hoc hex values anywhere in components.
-   ========================================================================== */
-
 :root {
-  /* --- Brand ramp -------------------------------------------------------- */
   --brand-red: #ff5037;
   --brand-orange: #ff7135;
   --brand-tangerine: #ff9432;
   --brand-amber: #fec432;
 
-  /* --- Surfaces ---------------------------------------------------------- */
   --surface-white: #ffffff;
   --surface-cream: #fdf1d2;
   --surface-cream-alt: #fff1ce;
   --surface-blush: #ffdcd8;
-  /* Selected tile in the search category strip */
+
   --surface-blush-soft: #ffede9;
   --surface-ink: #000000;
   --surface-ink-soft: #1d1d1d;
 
-  /* Hero frame fill sitting behind the background photo */
   --surface-hero-base: #372321;
 
-  /* Featured Venues: dusk-to-night skyline backdrop, sampled from the design */
   --featured-dusk-top: #514039;
   --featured-dusk-mid: #6b4835;
   --featured-dusk-glow: #834f2a;
@@ -36,47 +26,38 @@
   --featured-night: #160e0b;
   --featured-night-soft: #291e1a;
 
-  /*
-   * --- Accent ramp --------------------------------------------------------
-   * Shared by the promo banner gradient, the numbered step markers and the
-   * trust stat cards. `--brand-red` is the red step of this same ramp.
-   */
   --accent-coral: #ff786a;
   --accent-orange: #fe8b16;
   --accent-gold: #ffc331;
 
-  /* --- Venue-journey collage frame --------------------------------------- */
   --frame-gold: #ffcd29;
 
-  /* --- Control tokens ---------------------------------------------------- */
   --field-label: #808080;
   --field-arrow: #807d8d;
   --control-chevron: #6b7280;
   --dot-idle: #d9d9d9;
-  /* Unselected segmented-control tab, as used by the mobile hero search tabs */
+
   --control-idle: #edeef2;
   --control-idle-label: #5e5e5e;
-  /* Duotone search icons ship at this grey; the mask recolours them */
+
   --icon-idle: #828282;
-  /* Hairline between segments inside the compact search pill */
+
   --rule-divider: #dfdfdf;
-  /* Heavier rule under the search-page category strip */
+
   --rule-strong: #d0d0d0;
-  /* Rule above the price row inside a venue card */
+
   --rule-card: #c5c5c5;
-  /* Venue card: body outline and the filled amenity chips it contains */
+
   --card-hairline: #e5e5e5;
   --chip-fill: #f9fafb;
   --chip-ink: #364153;
 
-  /* --- Neutrals ---------------------------------------------------------- */
   --neutral-100: #f5f5f5;
-  /* Every hairline in the UI is this grey — never black. */
+
   --neutral-200: #e6e6e6;
   --neutral-400: #a3a3a3;
   --neutral-500: #737373;
 
-  /* --- Semantic roles ---------------------------------------------------- */
   --background: var(--surface-white);
   --foreground: var(--surface-ink-soft);
 
@@ -101,7 +82,6 @@
   --border: var(--neutral-200);
   --ring: var(--brand-orange);
 
-  /* --- Gradients --------------------------------------------------------- */
   --gradient-brand: linear-gradient(
     90deg,
     var(--brand-red) 0%,
@@ -114,38 +94,38 @@
     var(--brand-orange) 48%,
     var(--brand-amber) 100%
   );
-  /* Top bar scrim: 60% black fading to transparent */
+
   --gradient-topbar: linear-gradient(
     180deg,
     rgb(0 0 0 / 0.6) 0%,
     rgb(0 0 0 / 0) 100%
   );
-  /* Promo banner: coral -> brand red at the midpoint -> gold */
+
   --gradient-cta: linear-gradient(
     90deg,
     var(--accent-coral) 0%,
     var(--brand-red) 50%,
     var(--accent-gold) 100%
   );
-  /* Numbered step markers */
+
   --gradient-marker: linear-gradient(
     90deg,
     var(--brand-red) 0%,
     var(--accent-orange) 100%
   );
-  /* Trust section wash: cream carrying over from the vendors section into blush */
+
   --gradient-trusted: linear-gradient(
     90deg,
     var(--surface-cream) 0%,
     var(--surface-blush) 100%
   );
-  /* Hard-stop seam so a card can straddle two differently coloured sections */
+
   --gradient-seam-cream: linear-gradient(
     to bottom,
     var(--surface-cream) 0 50%,
     var(--background) 50% 100%
   );
-  /* Stand-in for the skyline photo until the asset is exported */
+
   --gradient-featured: linear-gradient(
     180deg,
     var(--featured-dusk-top) 0%,
@@ -156,13 +136,11 @@
     var(--featured-night-soft) 100%
   );
 
-  /* --- Radii ------------------------------------------------------------- */
   --venuze-radius-sm: 0.375rem;
   --venuze-radius-md: 0.5rem;
   --venuze-radius-lg: 10px;
   --venuze-radius-xl: 1rem;
 
-  /* --- Elevation --------------------------------------------------------- */
   --venuze-shadow-card:
     0 1px 2px 0 rgb(0 0 0 / 0.04), 0 4px 16px 0 rgb(0 0 0 / 0.06);
   --venuze-shadow-panel: 0 0 34px rgb(0 0 0 / 0.25);
@@ -171,18 +149,12 @@
   --venuze-shadow-card-body: 0 2px 3px rgb(0 0 0 / 0.05);
 }
 
-/* Every screen is designed light-only. A `.dark` palette used to live here, but
-   it turned the page background black, which hid the footer's rounded top edge
-   and darkened every hairline for anyone whose OS prefers dark mode. */
-
 @theme inline {
-  /* Brand */
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
   --color-brand-tangerine: var(--brand-tangerine);
   --color-brand-amber: var(--brand-amber);
 
-  /* Surfaces */
   --color-surface-white: var(--surface-white);
   --color-surface-cream: var(--surface-cream);
   --color-surface-cream-alt: var(--surface-cream-alt);
@@ -196,7 +168,6 @@
   --color-accent-gold: var(--accent-gold);
   --color-frame-gold: var(--frame-gold);
 
-  /* Controls */
   --color-field-label: var(--field-label);
   --color-field-arrow: var(--field-arrow);
   --color-control-chevron: var(--control-chevron);
@@ -211,7 +182,6 @@
   --color-chip-fill: var(--chip-fill);
   --color-chip-ink: var(--chip-ink);
 
-  /* Semantic */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -229,26 +199,21 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
-  /* Radii */
   --radius-sm: var(--venuze-radius-sm);
   --radius-md: var(--venuze-radius-md);
   --radius-lg: var(--venuze-radius-lg);
   --radius-xl: var(--venuze-radius-xl);
 
-  /* Elevation */
   --shadow-card: var(--venuze-shadow-card);
   --shadow-panel: var(--venuze-shadow-panel);
   --shadow-topbar: var(--venuze-shadow-topbar);
   --shadow-card-body: var(--venuze-shadow-card-body);
   --drop-shadow-control: var(--venuze-shadow-control);
 
-  /* Typography */
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Must stay inside @layer base: unlayered rules outrank every Tailwind
-   utility, which would make `border-<colour>` classes silently do nothing. */
 @layer base {
   * {
     border-color: var(--border);
@@ -267,10 +232,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* ==========================================================================
-   Reusable utilities
-   ========================================================================== */
 
 @utility bg-brand-gradient {
   background-image: var(--gradient-brand);
@@ -300,11 +261,6 @@ body {
   background-image: var(--gradient-trusted);
 }
 
-/*
- * Splits a wrapper's background at its vertical midpoint, letting a card
- * centred inside it sit half on the cream section above and half on the
- * page background below.
- */
 @utility bg-seam-cream {
   background-image: var(--gradient-seam-cream);
 }
@@ -315,14 +271,6 @@ body {
   color: transparent;
 }
 
-/*
- * Paints an SVG file in `currentColor` by using it as a mask instead of an
- * <img>. The exported search icons carry baked-in fills, and their duotone
- * `opacity="0.4"` paths survive as 40% alpha in the mask, so the two-tone look
- * is preserved while the colour follows the active/idle state.
- *
- * Callers set `--icon` to the imported file's url().
- */
 @utility mask-icon {
   background-color: currentColor;
   mask-image: var(--icon);
@@ -335,21 +283,12 @@ body {
   -webkit-mask-size: contain;
 }
 
-/* Caps content to the 1440px design frame and keeps it centred */
 @utility container-frame {
   margin-inline: auto;
   width: 100%;
   max-width: 1440px;
 }
 
-/* ==========================================================================
-   Leaflet overrides for the search map
-   Leaflet injects its own markup, so these have to be plain global classes
-   rather than utilities applied at the call site.
-   ========================================================================== */
-
-/* Teardrop brand pin rendered into a Leaflet divIcon. The square is rotated so
-   its square corner becomes the downward tip; the label counter-rotates. */
 .venuze-map-pin {
   display: block;
   width: 32px;
@@ -379,8 +318,6 @@ body {
   line-height: 1;
 }
 
-/* Hover card. Leaflet ships its own tooltip chrome (padding, 1px border, small
-   radius, nowrap) that all has to be unset before our card shows through. */
 .leaflet-tooltip.venuze-map-card {
   width: 240px;
   padding: 10px;
@@ -391,8 +328,6 @@ body {
   white-space: normal;
 }
 
-/* Leaflet draws the callout as a 6px transparent-border triangle; the design
-   calls for a 44x24 tail, so the border trick is swapped for a clip-path. */
 .leaflet-tooltip.venuze-map-card.leaflet-tooltip-top::before {
   left: 50%;
   bottom: 0;
@@ -410,7 +345,6 @@ body {
   background-color: var(--neutral-100);
 }
 
-/* Swipeable carousels keep native scrolling without the visible scrollbar */
 @utility no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

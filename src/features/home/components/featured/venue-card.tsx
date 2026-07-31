@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Car,
   ChevronLeft,
@@ -13,26 +12,15 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-
-import type { Venue } from "@/features/home/data/featured-venues";
+import type { Venue } from "@/types/venue";
 import { cn } from "@/lib/utils";
-
-/** 30px glass circle used by the share, save and gallery-step controls. */
 const IMAGE_ACTION =
   "absolute flex size-[30px] items-center justify-center rounded-full bg-surface-ink/50 text-surface-white backdrop-blur-[2px] transition-colors hover:bg-surface-ink/65";
-
 type AmenityChipProps = {
   icon?: LucideIcon;
-  /** Each glyph has its own size in the design: 14, 15 and 16px. */
   iconClassName?: string;
   label: string;
 };
-
-/**
- * Filled pill from the card spec: 28px tall, #F9FAFB fill, no border, #364153
- * ink. Widths come out of the content, which reproduces the 59/86/98px chips
- * without hardcoding them.
- */
 function AmenityChip({ icon: Icon, iconClassName, label }: AmenityChipProps) {
   return (
     <li className="bg-chip-fill text-chip-ink flex h-[28px] shrink-0 items-center gap-[5px] rounded-full px-[7px]">
@@ -47,25 +35,19 @@ function AmenityChip({ icon: Icon, iconClassName, label }: AmenityChipProps) {
     </li>
   );
 }
-
 type VenueCardProps = {
   venue: Venue;
-  /** Override the home-carousel basis sizing when embedding in a grid. */
   className?: string;
 };
-
 export function VenueCard({ venue, className }: VenueCardProps) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
-
   const galleryLength = venue.gallery.length;
-
   const stepImage = (direction: -1 | 1) => {
     setImageIndex(
       (current) => (current + direction + galleryLength) % galleryLength,
     );
   };
-
   return (
     <article
       className={cn(
@@ -73,7 +55,6 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         className,
       )}
     >
-      {/* 300x187 in the design, which is exactly 16:10 */}
       <div className="bg-muted relative aspect-16/10 w-full overflow-hidden rounded-t-[20px]">
         {venue.gallery.map((image, index) => (
           <Image
@@ -116,7 +97,6 @@ export function VenueCard({ venue, className }: VenueCardProps) {
           />
         </button>
 
-        {/* Design places these at y=89 of a 187px frame, just below centre */}
         <button
           type="button"
           aria-label="Previous photo"
@@ -162,8 +142,6 @@ export function VenueCard({ venue, className }: VenueCardProps) {
           {venue.location}
         </p>
 
-        {/* One wrapping row: the three chips total 253px so "+N more" wraps to a
-            second line on its own, matching the two rows in the design. */}
         <ul className="mt-[8px] mb-[21px] flex flex-wrap items-center gap-x-[5px] gap-y-[7px]">
           <AmenityChip
             icon={Users}

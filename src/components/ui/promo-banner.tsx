@@ -1,39 +1,14 @@
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import Link from "next/link";
-
 import arrowCurve from "@/assets/home/arrowCurve.svg";
 import { cn } from "@/lib/utils";
-
-export type PromoBannerContent = {
-  title: string;
-  description: string;
-  actionLabel: string;
-  actionHref?: string;
-  illustration: StaticImageData;
-  /** Sizing for the illustration; override when swapping in artwork of a different shape. */
-  illustrationClassName?: string;
-  /**
-   * Position utilities for the dashed curve pointing from the copy across to
-   * the illustration. Omit to hide the curve. Where it lands depends on how
-   * wide the illustration is, so each promo supplies its own offsets.
-   */
-  curveArrowClassName?: string;
-};
-
+import type { PromoBannerContent } from "@/types/promo";
+export type { PromoBannerContent } from "@/types/promo";
 type PromoBannerProps = PromoBannerContent & {
   className?: string;
 };
-
 const ACTION_CLASS =
   "bg-surface-ink text-surface-white focus-visible:ring-surface-white mt-7 inline-flex h-12 w-fit items-center justify-center rounded-lg px-10 text-[15px] font-semibold transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none";
-
-/**
- * Full-width gradient promo card. Stacks to centred copy above the illustration
- * on small screens; from `lg` the copy sits on the left with the illustration
- * flush to the bottom-right corner. Reused across pages with different copy and
- * artwork.
- */
 export function PromoBanner({
   title,
   description,

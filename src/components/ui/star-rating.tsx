@@ -1,14 +1,10 @@
 import { Star } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-
 type StarRatingProps = {
-  /** Number of filled stars. */
   rating: number;
   outOf?: number;
   className?: string;
 };
-
 export function StarRating({ rating, outOf = 5, className }: StarRatingProps) {
   return (
     <span

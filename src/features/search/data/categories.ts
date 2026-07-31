@@ -9,14 +9,13 @@ import photoStudioIcon from "@/assets/search/photoStudio.svg";
 import restaurantIcon from "@/assets/search/resturant.svg";
 import venueIcon from "@/assets/search/vanue.svg";
 import warehouseIcon from "@/assets/search/wareHouse.svg";
-
 type SpaceCategory = {
   id: string;
   label: string;
-  /** Statically imported SVG, drawn as a mask so it can be tinted. */
-  icon: { src: string };
+  icon: {
+    src: string;
+  };
 };
-
 export const SPACE_CATEGORIES = [
   { id: "all", label: "All Spaces", icon: allSpacesIcon },
   { id: "photo-studio", label: "Photo Studio", icon: photoStudioIcon },
@@ -30,7 +29,5 @@ export const SPACE_CATEGORIES = [
   { id: "private-party", label: "Private Party", icon: partyIcon },
   { id: "meeting", label: "Meeting", icon: meetingIcon },
 ] as const satisfies readonly SpaceCategory[];
-
 export type SpaceCategoryId = (typeof SPACE_CATEGORIES)[number]["id"];
-
 export const DEFAULT_SPACE_CATEGORY: SpaceCategoryId = "photo-studio";

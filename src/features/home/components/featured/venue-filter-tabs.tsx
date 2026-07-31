@@ -1,16 +1,13 @@
 "use client";
-
 import {
   VENUE_FILTERS,
   type VenueFilter,
 } from "@/features/home/data/featured-venues";
 import { cn } from "@/lib/utils";
-
 type VenueFilterTabsProps = {
   activeFilter: VenueFilter;
   onFilterChange: (filter: VenueFilter) => void;
 };
-
 export function VenueFilterTabs({
   activeFilter,
   onFilterChange,
@@ -23,7 +20,6 @@ export function VenueFilterTabs({
     >
       {VENUE_FILTERS.map((filter) => {
         const isActive = filter === activeFilter;
-
         return (
           <button
             key={filter}
@@ -32,7 +28,7 @@ export function VenueFilterTabs({
             aria-selected={isActive}
             onClick={() => onFilterChange(filter)}
             className={cn(
-              "flex md:h-12.5 h-8.5 shrink-0 items-center justify-center rounded-lg px-6 text-sm md:text-base font-bold tracking-[0.06em] uppercase transition-colors lg:px-8",
+              "flex h-8.5 shrink-0 items-center justify-center rounded-lg px-6 text-sm font-bold tracking-[0.06em] uppercase transition-colors md:h-12.5 md:text-base lg:px-8",
               isActive
                 ? "bg-brand-red text-surface-white"
                 : "bg-surface-white/30 text-surface-white hover:bg-surface-white/40",

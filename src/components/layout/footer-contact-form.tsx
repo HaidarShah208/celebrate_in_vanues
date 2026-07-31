@@ -1,29 +1,21 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-
 const contactSchema = z.object({
   email: z.email("Enter a valid email address"),
   message: z.string().trim().min(1, "Message is required"),
 });
-
 type ContactValues = z.infer<typeof contactSchema>;
-
-/** Dark-on-black field treatment, used only inside the footer. */
 const FIELD_CLASS =
   "border-surface-white/15 bg-surface-ink-soft text-surface-white placeholder:text-surface-white/50 focus-visible:ring-brand-red w-full rounded-lg border text-[15px] shadow-none";
-
 type FooterContactFormProps = {
   className?: string;
 };
-
 export function FooterContactForm({ className }: FooterContactFormProps) {
   const {
     register,
@@ -34,13 +26,10 @@ export function FooterContactForm({ className }: FooterContactFormProps) {
     resolver: zodResolver(contactSchema),
     defaultValues: { email: "", message: "" },
   });
-
   const onSubmit = handleSubmit(() => {
-    // TODO: post to the contact endpoint once it exists.
     toast.success("Thanks — we'll be in touch shortly.");
     reset();
   });
-
   return (
     <form
       onSubmit={onSubmit}

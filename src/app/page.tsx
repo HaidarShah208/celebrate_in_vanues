@@ -8,7 +8,6 @@ import { HeroSection } from "@/features/home/components/hero/hero-section";
 import { VenueJourneySection } from "@/features/home/components/journey/venue-journey-section";
 import { TrustedSection } from "@/features/home/components/trusted/trusted-section";
 import { VendorsSection } from "@/features/home/components/vendors/vendors-section";
-
 export default function HomePage() {
   return (
     <>

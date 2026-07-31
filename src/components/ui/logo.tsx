@@ -1,16 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import logoMark from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
-
 type LogoMarkProps = {
-  /** Set for above-the-fold use, so the mark is not lazy-loaded. */
   priority?: boolean;
   className?: string;
 };
-
-/** The Venuze "V" mark on its own. Defaults to the 48px header size. */
 export function LogoMark({ priority = false, className }: LogoMarkProps) {
   return (
     <Image
@@ -23,16 +18,12 @@ export function LogoMark({ priority = false, className }: LogoMarkProps) {
     />
   );
 }
-
 type LogoProps = {
   priority?: boolean;
-  /** `light` for dark backgrounds, `ink` for white headers. */
   tone?: "light" | "ink";
   href?: string;
   className?: string;
 };
-
-/** Full Venuze lockup: the mark plus the wordmark, 16px apart. */
 export function Logo({
   priority,
   tone = "light",
@@ -52,13 +43,13 @@ export function Logo({
       </span>
     </>
   );
-
   if (!href) {
     return (
-      <span className={cn("flex items-center gap-4", className)}>{content}</span>
+      <span className={cn("flex items-center gap-4", className)}>
+        {content}
+      </span>
     );
   }
-
   return (
     <Link
       href={href}

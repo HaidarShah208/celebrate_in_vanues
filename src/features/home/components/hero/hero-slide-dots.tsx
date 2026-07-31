@@ -1,16 +1,12 @@
 "use client";
-
 import { useHeroCarousel } from "@/features/home/components/hero/hero-carousel-context";
 import { cn } from "@/lib/utils";
-
 export function HeroSlideDots() {
   const { activeSlide, slideCount, goToSlide } = useHeroCarousel();
-
   return (
     <div className="flex items-center justify-center gap-[5px]">
       {Array.from({ length: slideCount }, (_, index) => {
         const isActive = index === activeSlide;
-
         return (
           <button
             key={index}

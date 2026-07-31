@@ -7,21 +7,12 @@ import { useCarouselScroll } from "@/hooks/use-carousel-scroll";
 import { cn } from "@/lib/utils";
 
 type CardCarouselProps = {
-  /** Describes what is being paged, used for the arrows' accessible labels. */
   label: string;
   children: ReactNode;
   tone?: "light" | "dark";
   className?: string;
 };
 
-/**
- * Snap-scrolling row of cards with paging arrows. Children set their own
- * responsive `basis`, so the same shell works for any card size.
- *
- * The track gap is 24px (`gap-6`). Cards that want a whole number per row
- * subtract it from their basis, and `useCarouselScroll` adds it to each step,
- * so all three must change together.
- */
 export function CardCarousel({
   label,
   children,
@@ -40,7 +31,6 @@ export function CardCarousel({
         {children}
       </div>
 
-      {/* Phones page these by swiping, so the arrows would only take up room. */}
       <CarouselArrows
         className="hidden sm:flex"
         label={label}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import { FooterContactForm } from "@/components/layout/footer-contact-form";
 import { LogoMark } from "@/components/ui/logo";
 import {
@@ -8,14 +7,9 @@ import {
   FOOTER_TAGLINE,
 } from "@/config/footer";
 import { siteConfig } from "@/config/site";
-
-/**
- * The generous top padding leaves room for a promo card to overlap the rounded
- * top edge; the card itself owns the negative margin that pulls it down.
- */
 export function SiteFooter() {
   return (
-    <footer className="bg-surface-ink  text-surface-white rounded-t-[50px] pt-24 lg:pt-31.25">
+    <footer className="bg-surface-ink text-surface-white rounded-t-[50px] pt-24 lg:pt-31.25">
       <div className="container-frame px-4 pb-10 sm:px-6 lg:px-20">
         <div className="flex flex-col gap-12 xl:flex-row xl:justify-between xl:gap-10">
           <div className="xl:flex-1">
@@ -32,7 +26,7 @@ export function SiteFooter() {
             >
               {FOOTER_COLUMNS.map((column) => (
                 <div key={column.title}>
-                  <h2 className="lg:text-xl text-[#A6A6A6] text-lg leading-none ">
+                  <h2 className="text-lg leading-none text-[#A6A6A6] lg:text-xl">
                     {column.title}
                   </h2>
 
@@ -41,7 +35,7 @@ export function SiteFooter() {
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="text-white hover:text-surface-white text-xs leading-[1.6] transition-colors"
+                          className="hover:text-surface-white text-xs leading-[1.6] text-white transition-colors"
                         >
                           {link.label}
                         </Link>

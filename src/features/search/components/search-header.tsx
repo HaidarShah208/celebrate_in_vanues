@@ -1,19 +1,14 @@
 import { Menu } from "lucide-react";
-
 import { ChevronDownMini, UserMini } from "@/components/ui/icons";
 import { Logo, LogoMark } from "@/components/ui/logo";
 import { CompactSearchBar } from "@/features/search/components/compact-search-bar";
-import type { SearchQuery } from "@/features/search/lib/search-params";
+import type { SearchQuery } from "@/types/search";
 import { cn } from "@/lib/utils";
-
 const CONTROL_BASE =
   "flex h-10 items-center justify-center rounded-lg border border-border bg-surface-white text-sm leading-[140%] font-semibold text-brand-red";
-
 type SearchHeaderProps = {
   query: SearchQuery;
 };
-
-/** 88px white top bar with a hairline bottom edge and a soft drop shadow. */
 export function SearchHeader({ query }: SearchHeaderProps) {
   return (
     <header className="bg-surface-white shadow-topbar sticky top-0 z-30">

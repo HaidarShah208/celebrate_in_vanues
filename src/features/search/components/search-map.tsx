@@ -1,16 +1,9 @@
 "use client";
-
 import { Maximize } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-
-import type { SearchVenue } from "@/features/search/data/venues";
+import type { SearchVenue } from "@/types/venue";
 import { cn } from "@/lib/utils";
-
-/**
- * Leaflet touches `window` on import, so the canvas is loaded client-side only.
- * The placeholder keeps the panel from collapsing while the chunk arrives.
- */
 const SearchMapCanvas = dynamic(
   () => import("@/features/search/components/search-map-canvas"),
   {
@@ -18,24 +11,19 @@ const SearchMapCanvas = dynamic(
     loading: () => <div className="bg-muted size-full animate-pulse" />,
   },
 );
-
 type SearchMapProps = {
   venues: readonly SearchVenue[];
   className?: string;
 };
-
 export function SearchMap({ venues, className }: SearchMapProps) {
   const panelRef = useRef<HTMLElement>(null);
-
   const toggleFullscreen = () => {
     if (document.fullscreenElement) {
       void document.exitFullscreen();
       return;
     }
-    // Resizing is picked up by the canvas' ResizeObserver, which re-syncs Leaflet.
     void panelRef.current?.requestFullscreen?.();
   };
-
   return (
     <aside
       ref={panelRef}
@@ -44,7 +32,6 @@ export function SearchMap({ venues, className }: SearchMapProps) {
     >
       <SearchMapCanvas venues={venues} />
 
-      {/* Leaflet's own panes sit at z-index 400+ */}
       <button
         type="button"
         onClick={toggleFullscreen}

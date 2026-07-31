@@ -1,9 +1,7 @@
 import Link from "next/link";
-
 type SearchErrorStateProps = {
   message?: string;
 };
-
 export function SearchErrorState({
   message = "We couldn’t load venues right now. Please try again.",
 }: SearchErrorStateProps) {

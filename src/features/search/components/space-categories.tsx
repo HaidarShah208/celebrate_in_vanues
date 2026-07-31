@@ -1,38 +1,28 @@
 "use client";
-
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-
 import { MaskIcon } from "@/components/ui/mask-icon";
 import { SPACE_CATEGORIES } from "@/features/search/data/categories";
-import {
-  buildSearchHref,
-  type SearchQuery,
-} from "@/features/search/lib/search-params";
+import { buildSearchHref } from "@/features/search/lib/search-params";
 import { cn } from "@/lib/utils";
-
+import type { SearchQuery } from "@/types/search";
 const ARROW_BASE =
   "text-control-chevron   hidden size-8 shrink-0 items-center justify-center transition-colors sm:flex";
-
 type SpaceCategoriesProps = {
   query: SearchQuery;
 };
-
 export function SpaceCategories({ query }: SpaceCategoriesProps) {
   const router = useRouter();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const activeCategory = query.category || "all";
-
   const scrollBy = (direction: -1 | 1) => {
     scrollerRef.current?.scrollBy({
       left: direction * 280,
       behavior: "smooth",
     });
   };
-
   return (
-    /* Bottom edge only — the header above already draws the line above this. */
     <div className="border-rule-strong border-b">
       <div className="flex items-center gap-2 px-4 py-0.5 sm:px-6 lg:px-8">
         <button
@@ -52,7 +42,6 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
         >
           {SPACE_CATEGORIES.map(({ id, label, icon }) => {
             const isActive = id === activeCategory;
-
             return (
               <button
                 key={id}
@@ -63,9 +52,6 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
                   router.push(buildSearchHref({ ...query, category: id }))
                 }
                 className={cn(
-                  // flex-1 spreads the tiles across the full width; the min
-                  // width keeps labels readable and lets the row scroll instead
-                  // of crushing them on narrow screens.
                   "flex h-19.75 w-28.25 flex-1 cursor-pointer snap-start flex-col items-center justify-center gap-1.5 rounded-md px-2 py-2 transition-colors",
                   isActive
                     ? "bg-[#F4F4F4] text-[#FF5037]"

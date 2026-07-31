@@ -1,6 +1,4 @@
 const BAR = "bg-muted animate-pulse rounded";
-
-/** Mirrors VenueCard's geometry so results don't shift when they land. */
 function VenueCardSkeleton() {
   return (
     <div className="flex flex-col">
@@ -12,7 +10,6 @@ function VenueCardSkeleton() {
 
         <div className={`${BAR} mt-[9px] h-4 w-[38%]`} />
 
-        {/* Widths match the real 59/86/98/63px amenity chips */}
         <div className="mt-[8px] flex flex-wrap items-center gap-x-[5px] gap-y-[7px]">
           {["w-[59px]", "w-[86px]", "w-[98px]", "w-[63px]"].map((width) => (
             <div
@@ -30,7 +27,6 @@ function VenueCardSkeleton() {
     </div>
   );
 }
-
 export function SearchResultsSkeleton() {
   return (
     <div

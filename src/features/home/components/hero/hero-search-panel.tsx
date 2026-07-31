@@ -1,9 +1,7 @@
 "use client";
-
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-
 import { HeroSearchField } from "@/features/home/components/hero/hero-search-field";
 import { HeroSearchTabs } from "@/features/home/components/hero/hero-search-tabs";
 import {
@@ -11,12 +9,10 @@ import {
   type HeroSearchTabId,
 } from "@/features/home/data/hero";
 import { buildSearchHref } from "@/features/search/lib/search-params";
-
 export function HeroSearchPanel() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<HeroSearchTabId>("venue");
-
   const handleSearch = () => {
     const where =
       HERO_SEARCH_FIELDS.find((field) => field.id === "where")?.value ?? "";
@@ -24,26 +20,18 @@ export function HeroSearchPanel() {
       HERO_SEARCH_FIELDS.find((field) => field.id === "when")?.value ?? "";
     const guests =
       HERO_SEARCH_FIELDS.find((field) => field.id === "guests")?.value ?? "";
-
     const href = buildSearchHref({
       location: where,
       date: when,
       guests,
       type: activeTab,
     });
-
     startTransition(() => {
       router.push(href);
     });
   };
-
   return (
     <div className="mx-auto w-full max-w-[1054px]">
-      {/*
-        On small screens one white card holds the tabs and the fields. From `lg`
-        the outer card turns transparent so the tab pill floats above the inner
-        field card, overlapping its top edge by 17px.
-      */}
       <div className="bg-surface-white rounded-lg p-4 lg:bg-transparent lg:p-0">
         <HeroSearchTabs activeTab={activeTab} onTabChange={setActiveTab} />
 

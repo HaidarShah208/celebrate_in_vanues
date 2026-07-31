@@ -2,7 +2,6 @@ import { CardCarousel } from "@/components/ui/card-carousel";
 import { MediaCard } from "@/components/ui/media-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { VENUE_CATEGORIES } from "@/features/home/data/categories";
-
 export function CategoriesSection() {
   return (
     <section className="bg-white py-14 sm:py-16 lg:py-20">

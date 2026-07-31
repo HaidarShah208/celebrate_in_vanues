@@ -1,7 +1,5 @@
 import Image from "next/image";
-
 import noResultIllustration from "@/assets/search/noResult.svg";
-
 export function SearchEmptyState() {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-20 text-center">

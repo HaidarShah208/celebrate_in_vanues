@@ -3,7 +3,6 @@ import { HeroCarouselProvider } from "@/features/home/components/hero/hero-carou
 import { HeroSearchPanel } from "@/features/home/components/hero/hero-search-panel";
 import { HeroSlideDots } from "@/features/home/components/hero/hero-slide-dots";
 import { HeroTopBar } from "@/features/home/components/hero/hero-top-bar";
-
 export function HeroSection() {
   return (
     <HeroCarouselProvider>

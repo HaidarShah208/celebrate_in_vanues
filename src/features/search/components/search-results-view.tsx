@@ -5,15 +5,13 @@ import { SearchHeader } from "@/features/search/components/search-header";
 import { SearchMap } from "@/features/search/components/search-map";
 import { SearchVenueGrid } from "@/features/search/components/search-venue-grid";
 import { SpaceCategories } from "@/features/search/components/space-categories";
-import type { SearchVenue } from "@/features/search/data/venues";
-import type { SearchQuery } from "@/features/search/lib/search-params";
-
+import type { SearchVenue } from "@/types/venue";
+import type { SearchQuery } from "@/types/search";
 type SearchResultsViewProps = {
   query: SearchQuery;
   venues: readonly SearchVenue[];
   totalCount: number;
 };
-
 export function SearchResultsView({
   query,
   venues,
@@ -25,9 +23,6 @@ export function SearchResultsView({
       <KeywordFiltersRow query={query} />
       <SpaceCategories query={query} />
 
-      {/* Gutters live on the results column so the map can run full-bleed to the
-          right edge with no rounding or vertical gap. The toolbar sits inside
-          that column too, so it never spans across the map. */}
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_421px]">
         <section
           aria-label="Venue results"
@@ -42,7 +37,6 @@ export function SearchResultsView({
           )}
         </section>
 
-        {/* Sticks just below the 88px header and fills the rest of the viewport */}
         <SearchMap
           venues={venues}
           className="lg:sticky lg:top-[88px] lg:h-[calc(100dvh-88px)]"

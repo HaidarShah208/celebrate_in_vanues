@@ -7,5 +7,4 @@ export const siteConfig = {
     github: "https://github.com",
   },
 } as const;
-
 export type SiteConfig = typeof siteConfig;

@@ -1,19 +1,8 @@
 import { PromoBanner } from "@/components/ui/promo-banner";
 import { LIST_VENUE_PROMO } from "@/features/home/data/promos";
-
-/**
- * Sits astride the footer's rounded top edge. The negative bottom margin lives
- * here rather than on the footer so the footer stays reusable on pages that do
- * not carry a promo above it.
- */
 export function ListVenueBanner() {
   return (
     <section className="relative z-10 -mb-10 lg:-mb-16.75">
-      {/*
-        White plate behind the card, stopping exactly where the footer's rounded
-        top edge starts so the footer's black still shows in the gutters either
-        side of the overlap. Its inset must match the negative margin above.
-      */}
       <div
         aria-hidden
         className="bg-surface-white absolute inset-x-0 top-0 bottom-10 lg:bottom-21.5"

@@ -1,7 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { DestinationCard } from "@/features/home/components/destinations/destination-card";
 import { DESTINATIONS } from "@/features/home/data/destinations";
-
 export function DestinationsSection() {
   return (
     <section className="bg-white py-14 sm:py-16 lg:py-20">

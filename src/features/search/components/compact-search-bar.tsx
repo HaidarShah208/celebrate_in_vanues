@@ -1,64 +1,47 @@
 "use client";
-
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Fragment, useTransition } from "react";
-
-import {
-  buildSearchHref,
-  type SearchQuery,
-} from "@/features/search/lib/search-params";
+import { buildSearchHref } from "@/features/search/lib/search-params";
 import { cn } from "@/lib/utils";
-
+import type { SearchQuery } from "@/types/search";
 type CompactSearchBarProps = {
   query: SearchQuery;
   className?: string;
 };
-
 function formatGuestsLabel(guests: string): string {
   const trimmed = guests.trim();
   if (!trimmed) return "Guests";
   if (/guests/i.test(trimmed)) return trimmed;
   return `${trimmed} Guests`;
 }
-
 function formatLocationDisplay(location: string): string {
   if (!location) return "Anywhere";
   const label = location
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
-  // Demo data uses city slugs; restore a country hint for the common ones.
   if (label.toLowerCase() === "london") return "London, UK";
   if (label.toLowerCase() === "dubai") return "Dubai, UAE";
   return label;
 }
-
 function formatDateDisplay(date: string): string {
   if (!date || date.toLowerCase() === "anytime") return "Anytime";
   return date;
 }
-
-/**
- * 430x44 pill search summary in the search-page header. Per the design it has
- * no border — the even drop shadow alone lifts it off the white bar.
- */
 export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-
   const segments = [
     formatLocationDisplay(query.location),
     formatDateDisplay(query.date),
     formatGuestsLabel(query.guests),
   ];
-
   const handleSearch = () => {
     startTransition(() => {
       router.push(buildSearchHref(query));
     });
   };
-
   return (
     <div
       className={cn(

@@ -1,15 +1,12 @@
 import { ChevronDown } from "lucide-react";
-
 type HeroSearchFieldProps = {
   label: string;
   value: string;
 };
-
 export function HeroSearchField({ label, value }: HeroSearchFieldProps) {
   return (
     <button
       type="button"
-      // No inset on small screens so labels line up with the tabs above them.
       className="flex w-full flex-col items-start gap-[5px] py-3 text-left lg:flex-1 lg:px-[5px] lg:py-0"
     >
       <span className="text-field-label w-full text-sm leading-[21px] font-normal">

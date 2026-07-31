@@ -1,20 +1,16 @@
-import type { StatTone } from "@/features/home/data/trusted";
+import type { StatTone } from "@/types/home";
 import { cn } from "@/lib/utils";
-
-/** The gold step of the accent ramp is too light for white text. */
 const TONES: Record<StatTone, string> = {
   coral: "bg-accent-coral text-surface-white",
   red: "bg-brand-red text-surface-white",
   orange: "bg-accent-orange text-surface-white",
   gold: "bg-accent-gold text-surface-ink",
 };
-
 type StatCardProps = {
   value: string;
   label: string;
   tone: StatTone;
 };
-
 export function StatCard({ value, label, tone }: StatCardProps) {
   return (
     <div

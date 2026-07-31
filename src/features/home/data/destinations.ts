@@ -1,19 +1,8 @@
-import type { StaticImageData } from "next/image";
-
 import imageNewYork from "@/assets/home/discover1.png";
 import imageLondon from "@/assets/home/discover2.png";
 import imageDubai from "@/assets/home/discover3.png";
-
-export type Destination = {
-  id: string;
-  city: string;
-  venueCount: number;
-  tagline: string;
-  popularVenue: string;
-  fromPricePerHour: number;
-  image: StaticImageData;
-};
-
+import type { Destination } from "@/types/home";
+export type { Destination } from "@/types/home";
 export const DESTINATIONS: readonly Destination[] = [
   {
     id: "new-york",

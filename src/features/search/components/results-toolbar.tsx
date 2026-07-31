@@ -1,45 +1,33 @@
 "use client";
-
 import { ArrowUpDown, ChevronDown, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 import { SPACE_CATEGORIES } from "@/features/search/data/categories";
 import {
   DEFAULT_ACTIVE_FILTERS,
   SORT_OPTIONS,
-  type ActiveFilterChip,
 } from "@/features/search/data/filters";
-import {
-  formatLocationLabel,
-  type SearchQuery,
-} from "@/features/search/lib/search-params";
-
-/** Outlined pill shared by the filter chips and the sort control. */
+import { formatLocationLabel } from "@/features/search/lib/search-params";
+import type { ActiveFilterChip, SearchQuery } from "@/types/search";
 const PILL_BASE =
   "border-border text-surface-ink flex h-8 shrink-0 items-center rounded-full border bg-surface-white text-[13px] leading-none";
-
 type ResultsToolbarProps = {
   query: SearchQuery;
   totalCount: number;
 };
-
 function categoryLabel(categoryId: string): string {
   const match = SPACE_CATEGORIES.find((category) => category.id === categoryId);
   if (!match || match.id === "all") return "spaces";
   return `${match.label.toLowerCase()}s`;
 }
-
 export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
   const router = useRouter();
   const [chips, setChips] = useState<ActiveFilterChip[]>([
     ...DEFAULT_ACTIVE_FILTERS,
   ]);
-
   const removeChip = (id: string) => {
     setChips((current) => current.filter((chip) => chip.id !== id));
   };
-
   const changeSort = (sort: string) => {
     const params = new URLSearchParams(window.location.search);
     if (sort === "recommended") {
@@ -50,12 +38,8 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
     const qs = params.toString();
     router.push(qs ? `/search?${qs}` : "/search");
   };
-
   return (
-    /* Padding comes from the results column that owns this row. */
     <div className="pt-4 pb-4">
-      {/* Single row that never wraps: the count and the sort pill hold their
-          size and the chips take the slack, scrolling once they overflow. */}
       <div className="flex items-center gap-x-4">
         <h1 className="text-surface-ink shrink-0 text-sm">
           {totalCount.toLocaleString()}{" "}

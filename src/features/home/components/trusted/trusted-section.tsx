@@ -3,7 +3,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { StatCard } from "@/features/home/components/trusted/stat-card";
 import { TestimonialCard } from "@/features/home/components/trusted/testimonial-card";
 import { TESTIMONIALS, TRUST_STATS } from "@/features/home/data/trusted";
-
 export function TrustedSection() {
   return (
     <section className="bg-trusted-wash py-14 sm:py-16 lg:py-20">
