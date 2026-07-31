@@ -13,15 +13,15 @@ export function JourneySteps() {
                 {index + 1}
               </span>
               {isLast ? null : (
-                <span className="border-border w-0 flex-1 border-l border-dashed" />
+                <span className="border-[#A1A1A1] w-0 flex-1 border-l border-dashed" />
               )}
             </div>
 
             <div className={isLast ? undefined : "pb-9 lg:pb-11"}>
-              <h3 className="text-foreground text-lg leading-[1.3] font-semibold lg:text-xl">
+              <h3 className="text-black  text-sm leading-[1.3] font-semibold lg:text-2xl">
                 {step.title}
               </h3>
-              <p className="text-muted-foreground mt-2 text-sm leading-[1.7] font-normal">
+              <p className="text-black mt-2 md:text-base text-sm leading-[1.7] font-normal">
                 {step.description}
               </p>
             </div>

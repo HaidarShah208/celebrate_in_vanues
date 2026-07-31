@@ -4,7 +4,7 @@ import { JourneySteps } from "@/features/home/components/journey/journey-steps";
 
 export function VenueJourneySection() {
   return (
-    <section className="bg-background py-14 sm:py-16 lg:py-24">
+    <section className="bg-white py-14 sm:py-16 lg:py-24">
       <div className="container-frame px-4 sm:px-6 lg:px-20">
         <SectionHeading
           title="Your Path to the Perfect Venue"

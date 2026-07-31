@@ -15,13 +15,13 @@ import { siteConfig } from "@/config/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="bg-surface-ink text-surface-white rounded-t-[40px] pt-24 lg:pt-[125px]">
+    <footer className="bg-surface-ink text-surface-white rounded-t-[40px] pt-24 lg:pt-31.25">
       <div className="container-frame px-4 pb-10 sm:px-6 lg:px-20">
         <div className="flex flex-col gap-12 xl:flex-row xl:justify-between xl:gap-10">
           <div className="xl:flex-1">
             <div className="flex items-start gap-4">
-              <LogoMark className="w-[52px] lg:w-[70px]" />
-              <p className="max-w-[570px] text-xl leading-[1.6] font-bold sm:text-2xl sm:leading-[1.85]">
+              <LogoMark className="w-13 lg:w-17.5" />
+              <p className="max-w-142.5 text-lg leading-[1.6] font-semibold sm:text-2xl sm:leading-[1.85]">
                 {FOOTER_TAGLINE}
               </p>
             </div>
@@ -32,7 +32,7 @@ export function SiteFooter() {
             >
               {FOOTER_COLUMNS.map((column) => (
                 <div key={column.title}>
-                  <h2 className="text-lg leading-none font-semibold">
+                  <h2 className="lg:text-xl text-[#A6A6A6] text-lg leading-none ">
                     {column.title}
                   </h2>
 
@@ -41,7 +41,7 @@ export function SiteFooter() {
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="text-surface-white/70 hover:text-surface-white text-[13px] leading-[1.6] transition-colors"
+                          className="text-white hover:text-surface-white text-xs leading-[1.6] transition-colors"
                         >
                           {link.label}
                         </Link>
@@ -53,7 +53,7 @@ export function SiteFooter() {
             </nav>
           </div>
 
-          <FooterContactForm className="w-full xl:w-[518px] xl:shrink-0" />
+          <FooterContactForm className="w-full lg:mt-4 xl:w-129.5 xl:shrink-0" />
         </div>
 
         <div className="border-surface-white/8 mt-10 flex flex-col items-center gap-6 border-t pt-9 sm:flex-row sm:justify-between">

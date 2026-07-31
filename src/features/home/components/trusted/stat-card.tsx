@@ -19,14 +19,14 @@ export function StatCard({ value, label, tone }: StatCardProps) {
   return (
     <div
       className={cn(
-        "flex min-h-[104px] flex-col items-center justify-center gap-1 rounded-lg px-4 text-center lg:min-h-[124px]",
+        "flex min-h-26 flex-col items-center justify-center gap-1 rounded-[20px] px-4 text-center lg:min-h-[124px]",
         TONES[tone],
       )}
     >
-      <p className="text-2xl leading-[1.2] font-bold tracking-[-0.01em] lg:text-[30px]">
+      <p className="text-2xl leading-[1.2] font-bold tracking-[-0.01em] lg:text-[34px]">
         {value}
       </p>
-      <p className="text-xs leading-[1.4] font-normal lg:text-sm">{label}</p>
+      <p className="text-xs leading-[1.4] font-normal lg:text-base">{label}</p>
     </div>
   );
 }
