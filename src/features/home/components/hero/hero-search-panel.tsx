@@ -1,35 +1,40 @@
 "use client";
+
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+
 import { HeroSearchField } from "@/features/home/components/hero/hero-search-field";
 import { HeroSearchTabs } from "@/features/home/components/hero/hero-search-tabs";
 import {
-  HERO_SEARCH_FIELDS,
+  HERO_DATE_OPTIONS,
+  HERO_GUEST_OPTIONS,
+  HERO_LOCATION_OPTIONS,
   type HeroSearchTabId,
 } from "@/features/home/data/hero";
 import { buildSearchHref } from "@/features/search/lib/search-params";
+
 export function HeroSearchPanel() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<HeroSearchTabId>("venue");
+  const [where, setWhere] = useState<string>(HERO_LOCATION_OPTIONS[0]);
+  const [when, setWhen] = useState<string>(HERO_DATE_OPTIONS[0]);
+  const [guests, setGuests] = useState<string>(HERO_GUEST_OPTIONS[1]);
+
   const handleSearch = () => {
-    const where =
-      HERO_SEARCH_FIELDS.find((field) => field.id === "where")?.value ?? "";
-    const when =
-      HERO_SEARCH_FIELDS.find((field) => field.id === "when")?.value ?? "";
-    const guests =
-      HERO_SEARCH_FIELDS.find((field) => field.id === "guests")?.value ?? "";
     const href = buildSearchHref({
       location: where,
       date: when,
       guests,
       type: activeTab,
     });
+
     startTransition(() => {
       router.push(href);
     });
   };
+
   return (
     <div className="mx-auto w-full max-w-[1054px]">
       <div className="bg-surface-white rounded-lg p-4 lg:bg-transparent lg:p-0">
@@ -38,9 +43,24 @@ export function HeroSearchPanel() {
         <div className="lg:bg-surface-white mt-2 lg:-mt-[17px] lg:h-[100px] lg:rounded-lg lg:px-[14px] lg:py-0">
           <div className="flex h-full flex-col gap-2 lg:flex-row lg:items-center lg:gap-[10px]">
             <div className="divide-border flex flex-col divide-y lg:contents lg:divide-y-0">
-              {HERO_SEARCH_FIELDS.map(({ id, label, value }) => (
-                <HeroSearchField key={id} label={label} value={value} />
-              ))}
+              <HeroSearchField
+                label="Where"
+                value={where}
+                options={HERO_LOCATION_OPTIONS}
+                onValueChange={setWhere}
+              />
+              <HeroSearchField
+                label="When"
+                value={when}
+                options={HERO_DATE_OPTIONS}
+                onValueChange={setWhen}
+              />
+              <HeroSearchField
+                label="Guests"
+                value={guests}
+                options={HERO_GUEST_OPTIONS}
+                onValueChange={setGuests}
+              />
             </div>
 
             <button

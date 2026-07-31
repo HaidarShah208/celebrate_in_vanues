@@ -345,6 +345,100 @@ body {
   background-color: var(--neutral-100);
 }
 
+@keyframes venuze-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes venuze-menu-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+}
+
+@keyframes venuze-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes venuze-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes venuze-drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes venuze-drawer-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.venuze-menu {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+
+.venuze-menu[data-state="open"] {
+  animation: venuze-menu-in 170ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.venuze-menu[data-state="closed"] {
+  animation: venuze-menu-out 130ms ease-in;
+}
+
+.venuze-overlay[data-state="open"] {
+  animation: venuze-overlay-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.venuze-overlay[data-state="closed"] {
+  animation: venuze-overlay-out 180ms ease-in;
+}
+
+.venuze-drawer[data-state="open"] {
+  animation: venuze-drawer-in 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.venuze-drawer[data-state="closed"] {
+  animation: venuze-drawer-out 220ms cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venuze-menu[data-state],
+  .venuze-overlay[data-state],
+  .venuze-drawer[data-state] {
+    animation-duration: 1ms;
+  }
+}
+
 .range-thumb {
   pointer-events: none;
 }

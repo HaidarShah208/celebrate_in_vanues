@@ -1,22 +1,25 @@
 "use client";
+
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Fragment, useTransition } from "react";
+
 import { buildSearchHref } from "@/features/search/lib/search-params";
 import { cn } from "@/lib/utils";
 import type { SearchQuery } from "@/types/search";
+
 type CompactSearchBarProps = {
   query: SearchQuery;
   className?: string;
 };
-function formatGuestsLabel(guests: string): string {
-  const trimmed = guests.trim();
-  if (!trimmed) return "Guests";
-  if (/guests/i.test(trimmed)) return trimmed;
-  return `${trimmed} Guests`;
-}
+
+type Segment = {
+  id: string;
+  label: string;
+  isPlaceholder: boolean;
+};
+
 function formatLocationDisplay(location: string): string {
-  if (!location) return "Anywhere";
   const label = location
     .split("-")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -25,23 +28,49 @@ function formatLocationDisplay(location: string): string {
   if (label.toLowerCase() === "dubai") return "Dubai, UAE";
   return label;
 }
-function formatDateDisplay(date: string): string {
-  if (!date || date.toLowerCase() === "anytime") return "Anytime";
-  return date;
+
+function formatGuestsDisplay(guests: string): string {
+  return /guests/i.test(guests) ? guests : `${guests} Guests`;
 }
+
+function buildSegments(query: SearchQuery): Segment[] {
+  const location = query.location.trim();
+  const date = query.date.trim();
+  const guests = query.guests.trim();
+
+  // The parser normalises a missing date to "anytime", so that value reads as unset.
+  const hasDate = Boolean(date) && date.toLowerCase() !== "anytime";
+
+  return [
+    {
+      id: "where",
+      label: location ? formatLocationDisplay(location) : "Where",
+      isPlaceholder: !location,
+    },
+    {
+      id: "when",
+      label: hasDate ? date : "When",
+      isPlaceholder: !hasDate,
+    },
+    {
+      id: "guests",
+      label: guests ? formatGuestsDisplay(guests) : "Guests",
+      isPlaceholder: !guests,
+    },
+  ];
+}
+
 export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const segments = [
-    formatLocationDisplay(query.location),
-    formatDateDisplay(query.date),
-    formatGuestsLabel(query.guests),
-  ];
+  const segments = buildSegments(query);
+
   const handleSearch = () => {
     startTransition(() => {
       router.push(buildSearchHref(query));
     });
   };
+
   return (
     <div
       className={cn(
@@ -51,15 +80,20 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
     >
       <div className="flex min-w-0 flex-1 items-center justify-center gap-[30px]">
         {segments.map((segment, index) => (
-          <Fragment key={segment}>
+          <Fragment key={segment.id}>
             {index > 0 ? (
               <span className="bg-rule-divider h-[17px] w-px shrink-0" />
             ) : null}
             <button
               type="button"
-              className="text-surface-ink truncate text-[14px] leading-[21px] font-medium"
+              className={cn(
+                "truncate text-[14px] leading-[21px] font-medium",
+                segment.isPlaceholder
+                  ? "text-muted-foreground"
+                  : "text-surface-ink",
+              )}
             >
-              {segment}
+              {segment.label}
             </button>
           </Fragment>
         ))}
