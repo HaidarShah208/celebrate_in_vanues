@@ -77,9 +77,7 @@ export function HeroTopBar() {
 function AccountMenu() {
   return (
     <DropdownMenuContent align="end" className="min-w-50">
-      <DropdownMenuItem>My profile</DropdownMenuItem>
-      <DropdownMenuItem>My bookings</DropdownMenuItem>
-      <DropdownMenuItem>Saved venues</DropdownMenuItem>
+    
       <DropdownMenuSeparator />
       <LogoutMenuItem />
     </DropdownMenuContent>

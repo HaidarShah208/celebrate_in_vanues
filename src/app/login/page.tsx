@@ -43,9 +43,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
           <LoginForm nextPath={safeNextPath(params.next)} />
 
-          <p className="text-muted-foreground mt-7 text-center text-xs leading-5">
-            Demo access is prefilled with the ReqRes test account.
-          </p>
+        
         </div>
       </section>
 
