@@ -25,9 +25,11 @@ const GALLERY_ARROW =
 
 type VenueCardProps = {
   venue: Venue;
+  /** Override the home-carousel basis sizing when embedding in a grid. */
+  className?: string;
 };
 
-export function VenueCard({ venue }: VenueCardProps) {
+export function VenueCard({ venue, className }: VenueCardProps) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -40,7 +42,12 @@ export function VenueCard({ venue }: VenueCardProps) {
   };
 
   return (
-    <article className="group bg-surface-white flex shrink-0 basis-[80%] snap-start flex-col overflow-hidden rounded-2xl sm:basis-[47%] lg:basis-[calc((100%-4.5rem)/4)]">
+    <article
+      className={cn(
+        "group bg-surface-white flex shrink-0 basis-[80%] snap-start flex-col overflow-hidden rounded-2xl sm:basis-[47%] lg:basis-[calc((100%-4.5rem)/4)]",
+        className,
+      )}
+    >
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         {venue.gallery.map((image, index) => (
           <Image
@@ -48,7 +55,7 @@ export function VenueCard({ venue }: VenueCardProps) {
             src={image}
             alt={index === 0 ? venue.title : ""}
             fill
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 47vw, 80vw"
+            sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 28vw, (min-width: 640px) 47vw, 80vw"
             className={cn(
               "object-cover transition-opacity duration-500",
               index === imageIndex ? "opacity-100" : "opacity-0",

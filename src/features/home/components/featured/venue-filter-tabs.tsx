@@ -32,7 +32,7 @@ export function VenueFilterTabs({
             aria-selected={isActive}
             onClick={() => onFilterChange(filter)}
             className={cn(
-              "flex h-[46px] shrink-0 items-center justify-center rounded-lg px-6 text-[13px] font-semibold tracking-[0.06em] uppercase transition-colors lg:px-8",
+              "flex md:h-12.5 h-8.5 shrink-0 items-center justify-center rounded-lg px-6 text-sm md:text-base font-bold tracking-[0.06em] uppercase transition-colors lg:px-8",
               isActive
                 ? "bg-brand-red text-surface-white"
                 : "bg-surface-white/30 text-surface-white hover:bg-surface-white/40",

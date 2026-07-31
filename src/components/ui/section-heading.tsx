@@ -42,7 +42,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "text-sm leading-[1.6] font-normal lg:text-xl",
+            "text-sm leading-[1.6] font-normal text-black lg:text-xl",
             DESCRIPTION_TONES[tone],
           )}
         >

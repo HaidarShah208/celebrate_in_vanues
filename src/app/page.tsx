@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/components/layout/site-footer";
 import { CategoriesSection } from "@/features/home/components/categories/categories-section";
 import { GrowBusinessBanner } from "@/features/home/components/cta/grow-business-banner";
 import { ListVenueBanner } from "@/features/home/components/cta/list-venue-banner";
@@ -10,16 +11,19 @@ import { VendorsSection } from "@/features/home/components/vendors/vendors-secti
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col">
-      <HeroSection />
-      <CategoriesSection />
-      <FeaturedVenuesSection />
-      <VendorsSection />
-      <GrowBusinessBanner />
-      <VenueJourneySection />
-      <TrustedSection />
-      <DestinationsSection />
-      <ListVenueBanner />
-    </main>
+    <>
+      <main className="flex flex-1 flex-col">
+        <HeroSection />
+        <CategoriesSection />
+        <FeaturedVenuesSection />
+        <VendorsSection />
+        <GrowBusinessBanner />
+        <VenueJourneySection />
+        <TrustedSection />
+        <DestinationsSection />
+        <ListVenueBanner />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
