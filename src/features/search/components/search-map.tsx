@@ -1,9 +1,12 @@
 "use client";
+
 import { Maximize } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
+
 import type { SearchVenue } from "@/types/venue";
 import { cn } from "@/lib/utils";
+
 const SearchMapCanvas = dynamic(
   () => import("@/features/search/components/search-map-canvas"),
   {
@@ -11,12 +14,15 @@ const SearchMapCanvas = dynamic(
     loading: () => <div className="bg-muted size-full animate-pulse" />,
   },
 );
+
 type SearchMapProps = {
   venues: readonly SearchVenue[];
   className?: string;
 };
+
 export function SearchMap({ venues, className }: SearchMapProps) {
   const panelRef = useRef<HTMLElement>(null);
+
   const toggleFullscreen = () => {
     if (document.fullscreenElement) {
       void document.exitFullscreen();
@@ -24,10 +30,11 @@ export function SearchMap({ venues, className }: SearchMapProps) {
     }
     void panelRef.current?.requestFullscreen?.();
   };
+
   return (
     <aside
       ref={panelRef}
-      className={cn("bg-muted relative hidden lg:block", className)}
+      className={cn("bg-muted relative block", className)}
       aria-label="Map of search results"
     >
       <SearchMapCanvas venues={venues} />

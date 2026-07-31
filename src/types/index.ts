@@ -5,6 +5,7 @@ export type {
   SearchQuery,
   SearchParamsInput,
   ActiveFilterChip,
+  FilterDraft,
 } from "@/types/search";
 export type { PromoBannerContent } from "@/types/promo";
 export type { Destination, StatTone, Testimonial } from "@/types/home";

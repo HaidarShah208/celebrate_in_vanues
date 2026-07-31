@@ -5,13 +5,15 @@ import { SearchHeader } from "@/features/search/components/search-header";
 import { SearchMap } from "@/features/search/components/search-map";
 import { SearchVenueGrid } from "@/features/search/components/search-venue-grid";
 import { SpaceCategories } from "@/features/search/components/space-categories";
-import type { SearchVenue } from "@/types/venue";
 import type { SearchQuery } from "@/types/search";
+import type { SearchVenue } from "@/types/venue";
+
 type SearchResultsViewProps = {
   query: SearchQuery;
   venues: readonly SearchVenue[];
   totalCount: number;
 };
+
 export function SearchResultsView({
   query,
   venues,
@@ -23,7 +25,7 @@ export function SearchResultsView({
       <KeywordFiltersRow query={query} />
       <SpaceCategories query={query} />
 
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_421px]">
+      <div className="grid flex-1 grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,421px)]">
         <section
           aria-label="Venue results"
           className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8"
@@ -39,7 +41,7 @@ export function SearchResultsView({
 
         <SearchMap
           venues={venues}
-          className="lg:sticky lg:top-[88px] lg:h-[calc(100dvh-88px)]"
+          className="border-border order-first h-[320px] border-b md:sticky md:top-[88px] md:order-none md:h-[calc(100dvh-88px)] md:border-b-0"
         />
       </div>
     </div>

@@ -57,7 +57,7 @@ export function SearchResultsSkeleton() {
         ))}
       </div>
 
-      <div className="grid flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_421px]">
+      <div className="grid flex-1 grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,421px)]">
         <div className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8">
           <div className="flex items-center gap-x-4 pt-4 pb-4">
             <div className={`${BAR} h-5 w-[210px] shrink-0`} />
@@ -81,7 +81,9 @@ export function SearchResultsSkeleton() {
           </div>
         </div>
 
-        <div className={`${BAR} hidden rounded-none lg:block`} />
+        <div
+          className={`${BAR} order-first h-[320px] rounded-none md:order-none md:h-auto`}
+        />
       </div>
     </div>
   );
