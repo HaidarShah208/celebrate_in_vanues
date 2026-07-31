@@ -6,10 +6,7 @@ import { SearchMap } from "@/features/search/components/search-map";
 import { SearchVenueGrid } from "@/features/search/components/search-venue-grid";
 import { SpaceCategories } from "@/features/search/components/space-categories";
 import type { SearchVenue } from "@/features/search/data/venues";
-import {
-  formatLocationLabel,
-  type SearchQuery,
-} from "@/features/search/lib/search-params";
+import type { SearchQuery } from "@/features/search/lib/search-params";
 
 type SearchResultsViewProps = {
   query: SearchQuery;
@@ -22,8 +19,6 @@ export function SearchResultsView({
   venues,
   totalCount,
 }: SearchResultsViewProps) {
-  const locationLabel = formatLocationLabel(query.location || "London");
-
   return (
     <div className="bg-surface-white flex min-h-0 flex-1 flex-col">
       <SearchHeader query={query} />
@@ -33,7 +28,7 @@ export function SearchResultsView({
       {/* Gutters live on the results column so the map can run full-bleed to the
           right edge with no rounding or vertical gap. The toolbar sits inside
           that column too, so it never spans across the map. */}
-      <div className="grid flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_421px]">
         <section
           aria-label="Venue results"
           className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8"
@@ -41,7 +36,7 @@ export function SearchResultsView({
           <ResultsToolbar query={query} totalCount={totalCount} />
 
           {venues.length === 0 ? (
-            <SearchEmptyState locationLabel={locationLabel} />
+            <SearchEmptyState />
           ) : (
             <SearchVenueGrid venues={venues} />
           )}
@@ -50,7 +45,7 @@ export function SearchResultsView({
         {/* Sticks just below the 88px header and fills the rest of the viewport */}
         <SearchMap
           venues={venues}
-          className="xl:sticky xl:top-[88px] xl:h-[calc(100dvh-88px)]"
+          className="lg:sticky lg:top-[88px] lg:h-[calc(100dvh-88px)]"
         />
       </div>
     </div>

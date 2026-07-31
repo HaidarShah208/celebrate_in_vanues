@@ -34,7 +34,7 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
   return (
     /* Bottom edge only — the header above already draws the line above this. */
     <div className="border-rule-strong border-b">
-      <div className="container-frame flex items-center gap-2 px-4 py-0.5 sm:px-6 lg:px-8">
+      <div className="flex items-center gap-2 px-4 py-0.5 sm:px-6 lg:px-8">
         <button
           type="button"
           aria-label="Previous categories"

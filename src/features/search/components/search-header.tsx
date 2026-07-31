@@ -17,7 +17,7 @@ type SearchHeaderProps = {
 export function SearchHeader({ query }: SearchHeaderProps) {
   return (
     <header className="bg-surface-white shadow-topbar sticky top-0 z-30">
-      <div className="container-frame flex h-22 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="flex h-22 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <LogoMark priority className="w-10 lg:hidden" />
         <Logo priority tone="ink" className="hidden shrink-0 lg:flex" />
 

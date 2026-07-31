@@ -1,27 +1,24 @@
-import { SearchX } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
 
-type SearchEmptyStateProps = {
-  locationLabel: string;
-};
+import noResultIllustration from "@/assets/search/noResult.svg";
 
-export function SearchEmptyState({ locationLabel }: SearchEmptyStateProps) {
+export function SearchEmptyState() {
   return (
-    <div className="border-border bg-surface-white flex flex-col items-center justify-center rounded-2xl border px-6 py-20 text-center">
-      <SearchX className="text-muted-foreground size-10" aria-hidden />
-      <h2 className="text-foreground mt-4 text-lg font-semibold">
-        No venues found near {locationLabel}
+    <div className="flex flex-col items-center justify-center px-6 py-20 text-center">
+      <Image
+        src={noResultIllustration}
+        alt=""
+        width={200}
+        height={150}
+        aria-hidden
+      />
+
+      <h2 className="text-surface-ink mt-6 text-[15px] leading-6 font-semibold">
+        No data found for your search.
       </h2>
-      <p className="text-muted-foreground mt-2 max-w-md text-sm">
-        Try adjusting your filters, guests, or location — or browse all spaces
-        from the home page.
+      <p className="text-muted-foreground mt-1 max-w-[280px] text-[13px] leading-5">
+        Explore other options or clear filters to see more results.
       </p>
-      <Link
-        href="/"
-        className="bg-brand-red text-surface-white mt-6 inline-flex h-11 items-center rounded-lg px-5 text-sm font-semibold"
-      >
-        Back to home
-      </Link>
     </div>
   );
 }

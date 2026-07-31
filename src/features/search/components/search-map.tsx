@@ -39,7 +39,7 @@ export function SearchMap({ venues, className }: SearchMapProps) {
   return (
     <aside
       ref={panelRef}
-      className={cn("bg-muted relative hidden xl:block", className)}
+      className={cn("bg-muted relative hidden lg:block", className)}
       aria-label="Map of search results"
     >
       <SearchMapCanvas venues={venues} />

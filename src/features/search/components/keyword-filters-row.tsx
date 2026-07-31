@@ -34,7 +34,7 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
 
   return (
     <div className="border-border border-b">
-      <div className="container-frame flex h-16 items-center gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="flex h-16 items-center gap-4 px-4 sm:px-6 lg:px-8">
         <label className="flex h-full min-w-0 flex-1 items-center gap-3">
           {/* Sits in the flow rather than absolutely, so the input needs no inset. */}
           <Image
