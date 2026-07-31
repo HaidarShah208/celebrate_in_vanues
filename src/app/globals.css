@@ -286,7 +286,6 @@ body {
 @utility container-frame {
   margin-inline: auto;
   width: 100%;
-  max-width: 1440px;
 }
 
 .venuze-map-pin {

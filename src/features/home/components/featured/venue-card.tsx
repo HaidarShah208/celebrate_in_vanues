@@ -16,6 +16,10 @@ import type { Venue } from "@/types/venue";
 import { cn } from "@/lib/utils";
 const IMAGE_ACTION =
   "absolute flex size-[30px] items-center justify-center rounded-full bg-surface-ink/50 text-surface-white backdrop-blur-[2px] transition-colors hover:bg-surface-ink/65";
+
+// Touch devices get no hover, so the arrows only fade in where hover exists.
+const GALLERY_ARROW =
+  "transition duration-200 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:focus-visible:opacity-100";
 type AmenityChipProps = {
   icon?: LucideIcon;
   iconClassName?: string;
@@ -23,7 +27,7 @@ type AmenityChipProps = {
 };
 function AmenityChip({ icon: Icon, iconClassName, label }: AmenityChipProps) {
   return (
-    <li className="bg-chip-fill text-chip-ink flex h-[28px] shrink-0 items-center gap-[5px] rounded-full px-[7px]">
+    <li className="bg-chip-fill text-chip-ink flex h-7 shrink-0 items-center gap-1.25 rounded-full px-1.75">
       {Icon ? (
         <Icon
           className={cn("shrink-0", iconClassName)}
@@ -71,7 +75,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         ))}
 
         {venue.isVerified && (
-          <span className="bg-surface-ink/50 text-surface-white absolute top-[9px] left-[10px] flex h-[30px] items-center rounded-[92px] px-[15px] text-[11.05px] leading-[18px] font-semibold tracking-[-0.03em] backdrop-blur-[2px]">
+          <span className="bg-surface-ink/50 text-surface-white absolute top-2.25 left-2.5 flex h-7.5 items-center rounded-[92px] px-[15px] text-[11.05px] leading-[18px] font-semibold tracking-[-0.03em] backdrop-blur-[2px]">
             Verified
           </span>
         )}
@@ -79,19 +83,19 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         <button
           type="button"
           aria-label="Share venue"
-          className={cn(IMAGE_ACTION, "top-[9px] right-[43px]")}
+          className={cn(IMAGE_ACTION, "top-2.25 right-10.75")}
         >
-          <Share className="size-[15px]" strokeWidth={1.5} aria-hidden />
+          <Share className="size-3.75" strokeWidth={1.5} aria-hidden />
         </button>
         <button
           type="button"
           aria-label={isSaved ? "Remove from saved" : "Save venue"}
           aria-pressed={isSaved}
           onClick={() => setIsSaved((saved) => !saved)}
-          className={cn(IMAGE_ACTION, "top-[9px] right-[10px]")}
+          className={cn(IMAGE_ACTION, "top-2.25 right-2.5")}
         >
           <Heart
-            className={cn("size-[15px]", isSaved && "fill-current")}
+            className={cn("size-3.75", isSaved && "fill-current")}
             strokeWidth={1.5}
             aria-hidden
           />
@@ -101,7 +105,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
           type="button"
           aria-label="Previous photo"
           onClick={() => stepImage(-1)}
-          className={cn(IMAGE_ACTION, "top-[47.5%] left-[10px]")}
+          className={cn(IMAGE_ACTION, GALLERY_ARROW, "top-[47.5%] left-2.5")}
         >
           <ChevronLeft className="size-5" strokeWidth={1.5} aria-hidden />
         </button>
@@ -109,20 +113,20 @@ export function VenueCard({ venue, className }: VenueCardProps) {
           type="button"
           aria-label="Next photo"
           onClick={() => stepImage(1)}
-          className={cn(IMAGE_ACTION, "top-[47.5%] right-[10px]")}
+          className={cn(IMAGE_ACTION, GALLERY_ARROW, "top-[47.5%] right-2.5")}
         >
           <ChevronRight className="size-5" strokeWidth={1.5} aria-hidden />
         </button>
 
         <div
-          className="absolute bottom-[12px] left-1/2 flex -translate-x-1/2 items-center gap-[3px]"
+          className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-[3px]"
           aria-hidden
         >
           {venue.gallery.map((_, index) => (
             <span
               key={index}
               className={cn(
-                "size-[5px] rounded-full transition-opacity",
+                "size-1.25 rounded-full transition-opacity",
                 index === imageIndex
                   ? "bg-surface-white"
                   : "bg-surface-white/50",

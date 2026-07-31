@@ -25,7 +25,7 @@ export function SearchResultsView({
       <KeywordFiltersRow query={query} />
       <SpaceCategories query={query} />
 
-      <div className="grid flex-1 grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(280px,421px)]">
+      <div className="grid flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,421px)]">
         <section
           aria-label="Venue results"
           className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8"
@@ -41,7 +41,7 @@ export function SearchResultsView({
 
         <SearchMap
           venues={venues}
-          className="border-border order-first h-[320px] border-b md:sticky md:top-[88px] md:order-none md:h-[calc(100dvh-88px)] md:border-b-0"
+          className="border-border h-[360px] border-t md:h-[420px] lg:sticky lg:top-[88px] lg:h-[calc(100dvh-88px)] lg:border-t-0"
         />
       </div>
     </div>
