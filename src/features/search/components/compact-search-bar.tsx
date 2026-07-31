@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { Fragment, useTransition } from "react";
 
 import {
   buildSearchHref,
@@ -40,8 +40,8 @@ function formatDateDisplay(date: string): string {
 }
 
 /**
- * Pill search summary used in the white search-page header. Re-submitting
- * keeps the same param contract the hero produces.
+ * 430x44 pill search summary in the search-page header. Per the design it has
+ * no border — the even drop shadow alone lifts it off the white bar.
  */
 export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   const router = useRouter();
@@ -62,22 +62,25 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   return (
     <div
       className={cn(
-        " bg-surface-white flex h-12 max-w-full items-center rounded-[10px] shadow-md",
+        "drop-shadow-control bg-surface-white flex h-11 w-full max-w-[430px] items-center rounded-[10px] pr-[7px] pl-[25px]",
         className,
       )}
     >
-      {segments.map((segment, index) => (
-        <button
-          key={segment}
-          type="button"
-          className={cn(
-            "text-surface-ink truncate px-3 text-sm font-medium",
-            index > 0 && "border-border border-l",
-          )}
-        >
-          {segment}
-        </button>
-      ))}
+      <div className="flex min-w-0 flex-1 items-center justify-center gap-[30px]">
+        {segments.map((segment, index) => (
+          <Fragment key={segment}>
+            {index > 0 ? (
+              <span className="bg-rule-divider h-[17px] w-px shrink-0" />
+            ) : null}
+            <button
+              type="button"
+              className="text-surface-ink truncate text-[14px] leading-[21px] font-medium"
+            >
+              {segment}
+            </button>
+          </Fragment>
+        ))}
+      </div>
 
       <button
         type="button"
@@ -85,9 +88,9 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
         aria-busy={isPending}
         disabled={isPending}
         onClick={handleSearch}
-        className="bg-brand-red text-surface-white ml-2 flex size-9 shrink-0 items-center justify-center rounded-[10px] transition-opacity hover:opacity-90 disabled:opacity-70"
+        className="bg-brand-red text-surface-white ml-[7px] flex h-[34px] w-[35px] shrink-0 items-center justify-center rounded-[10px] transition-opacity hover:opacity-90 disabled:opacity-70"
       >
-        <Search className="size-4" strokeWidth={2} aria-hidden />
+        <Search className="size-[18px]" strokeWidth={1.75} aria-hidden />
       </button>
     </div>
   );

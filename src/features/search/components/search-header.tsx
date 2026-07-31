@@ -16,14 +16,14 @@ type SearchHeaderProps = {
 /** 88px white top bar with a hairline bottom edge and a soft drop shadow. */
 export function SearchHeader({ query }: SearchHeaderProps) {
   return (
-    <header className=" bg-surface-white shadow-topbar sticky top-0 z-30">
+    <header className="bg-surface-white shadow-topbar sticky top-0 z-30">
       <div className="container-frame flex h-22 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <LogoMark priority className="w-10 lg:hidden" />
         <Logo priority tone="ink" className="hidden shrink-0 lg:flex" />
 
         <CompactSearchBar
           query={query}
-          className="mx-auto hidden min-w-0 flex-1 justify-center md:flex md:max-w-[420px] lg:max-w-[480px]"
+          className="mx-auto hidden min-w-0 md:flex"
         />
 
         <nav

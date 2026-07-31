@@ -66,7 +66,7 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
                   // flex-1 spreads the tiles across the full width; the min
                   // width keeps labels readable and lets the row scroll instead
                   // of crushing them on narrow screens.
-                  "flex flex-1 cursor-pointer w-28.25 h-19.75 snap-start flex-col items-center justify-center gap-1.5 rounded-md px-2 py-2 transition-colors",
+                  "flex h-19.75 w-28.25 flex-1 cursor-pointer snap-start flex-col items-center justify-center gap-1.5 rounded-md px-2 py-2 transition-colors",
                   isActive
                     ? "bg-[#F4F4F4] text-[#FF5037]"
                     : "text-icon-idle hover:bg-[#F4F4F4]/50",

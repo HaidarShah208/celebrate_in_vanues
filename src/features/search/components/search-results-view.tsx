@@ -31,8 +31,13 @@ export function SearchResultsView({
       <SpaceCategories query={query} />
       <ResultsToolbar query={query} totalCount={totalCount} />
 
-      <div className="grid flex-1 grid-cols-1 gap-6 px-4 pb-8 sm:px-6 lg:px-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
-        <section aria-label="Venue results" className="min-w-0">
+      {/* Gutters live on the results column so the map can run full-bleed to the
+          right edge with no rounding or vertical gap. */}
+      <div className="grid flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+        <section
+          aria-label="Venue results"
+          className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8"
+        >
           {venues.length === 0 ? (
             <SearchEmptyState locationLabel={locationLabel} />
           ) : (
@@ -40,9 +45,10 @@ export function SearchResultsView({
           )}
         </section>
 
+        {/* Sticks just below the 88px header and fills the rest of the viewport */}
         <SearchMap
           venues={venues}
-          className="xl:sticky xl:top-[104px] xl:h-[calc(100dvh-120px)]"
+          className="xl:sticky xl:top-[88px] xl:h-[calc(100dvh-88px)]"
         />
       </div>
     </div>

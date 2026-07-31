@@ -58,6 +58,8 @@
   --control-idle-label: #5e5e5e;
   /* Duotone search icons ship at this grey; the mask recolours them */
   --icon-idle: #828282;
+  /* Hairline between segments inside the compact search pill */
+  --rule-divider: #dfdfdf;
 
   /* --- Neutrals ---------------------------------------------------------- */
   --neutral-100: #f5f5f5;
@@ -207,6 +209,7 @@
   --color-control-idle: var(--control-idle);
   --color-control-idle-label: var(--control-idle-label);
   --color-icon-idle: var(--icon-idle);
+  --color-rule-divider: var(--rule-divider);
 
   /* Semantic */
   --color-background: var(--background);
@@ -332,6 +335,74 @@ body {
   margin-inline: auto;
   width: 100%;
   max-width: 1440px;
+}
+
+/* ==========================================================================
+   Leaflet overrides for the search map
+   Leaflet injects its own markup, so these have to be plain global classes
+   rather than utilities applied at the call site.
+   ========================================================================== */
+
+/* Teardrop brand pin rendered into a Leaflet divIcon. The square is rotated so
+   its square corner becomes the downward tip; the label counter-rotates. */
+.venuze-map-pin {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50% 50% 50% 0;
+  border: 2px solid var(--surface-white);
+  background-color: var(--brand-red);
+  box-shadow: var(--venuze-shadow-control);
+  transform: rotate(-45deg);
+  transition: transform 150ms ease;
+}
+
+.venuze-map-pin:hover {
+  transform: rotate(-45deg) scale(1.1);
+}
+
+.venuze-map-pin > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  color: var(--surface-white);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Hover card. Leaflet ships its own tooltip chrome (padding, 1px border, small
+   radius, nowrap) that all has to be unset before our card shows through. */
+.leaflet-tooltip.venuze-map-card {
+  width: 240px;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  background-color: var(--surface-white);
+  box-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
+  white-space: normal;
+}
+
+/* Leaflet draws the callout as a 6px transparent-border triangle; the design
+   calls for a 44x24 tail, so the border trick is swapped for a clip-path. */
+.leaflet-tooltip.venuze-map-card.leaflet-tooltip-top::before {
+  left: 50%;
+  bottom: 0;
+  width: 44px;
+  height: 24px;
+  margin-left: -22px;
+  margin-bottom: -14px;
+  border: 0;
+  background-color: var(--surface-white);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background-color: var(--neutral-100);
 }
 
 /* Swipeable carousels keep native scrolling without the visible scrollbar */

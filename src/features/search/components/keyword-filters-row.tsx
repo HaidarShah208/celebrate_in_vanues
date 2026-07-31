@@ -1,9 +1,11 @@
 "use client";
 
-import { Search, SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
+import searchIcon from "@/assets/search/search.svg";
 import {
   buildSearchHref,
   type SearchQuery,
@@ -33,10 +35,15 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
   return (
     <div className="border-border border-b">
       <div className="container-frame flex h-16 items-center gap-4 px-4 sm:px-6 lg:px-8">
-        <label className="relative flex h-full min-w-0 flex-1 items-center">
-          <Search
-            className="text-surface-ink pointer-events-none absolute left-0 size-6"
+        <label className="flex h-full min-w-0 flex-1 items-center gap-3">
+          {/* Sits in the flow rather than absolutely, so the input needs no inset. */}
+          <Image
+            src={searchIcon}
+            alt=""
             aria-hidden
+            width={20}
+            height={20}
+            className="shrink-0"
           />
           <input
             type="search"
@@ -50,7 +57,7 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
             }}
             placeholder="Add keywords..."
             aria-label="Add keywords"
-            className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 pl-8 text-sm outline-none"
+            className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 text-sm outline-none"
           />
         </label>
 

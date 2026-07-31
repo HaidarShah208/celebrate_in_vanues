@@ -48,7 +48,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         className,
       )}
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <div className="relative aspect-16/10 w-full overflow-hidden">
         {venue.gallery.map((image, index) => (
           <Image
             key={index}
