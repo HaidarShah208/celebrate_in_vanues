@@ -131,7 +131,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-foreground text-base leading-[1.35] font-semibold">
+        <h3 className="text-surface-ink text-base leading-[1.35] font-semibold">
           {venue.title}
         </h3>
 

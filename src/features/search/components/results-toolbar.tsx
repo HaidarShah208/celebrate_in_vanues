@@ -1,9 +1,10 @@
 "use client";
 
-import { ChevronDown, X } from "lucide-react";
+import { ArrowUpDown, ChevronDown, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { SPACE_CATEGORIES } from "@/features/search/data/categories";
 import {
   DEFAULT_ACTIVE_FILTERS,
   SORT_OPTIONS,
@@ -13,8 +14,10 @@ import {
   formatLocationLabel,
   type SearchQuery,
 } from "@/features/search/lib/search-params";
-import { SPACE_CATEGORIES } from "@/features/search/data/categories";
-import { cn } from "@/lib/utils";
+
+/** Outlined pill shared by the filter chips and the sort control. */
+const PILL_BASE =
+  "border-border text-surface-ink flex h-8 shrink-0 items-center rounded-full border bg-surface-white text-[13px] leading-none";
 
 type ResultsToolbarProps = {
   query: SearchQuery;
@@ -37,53 +40,55 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
     setChips((current) => current.filter((chip) => chip.id !== id));
   };
 
-  const locationLabel = formatLocationLabel(query.location || "London");
-  const categoryText = categoryLabel(query.category || "photo-studio");
-  const countLabel = totalCount.toLocaleString();
+  const changeSort = (sort: string) => {
+    const params = new URLSearchParams(window.location.search);
+    if (sort === "recommended") {
+      params.delete("sort");
+    } else {
+      params.set("sort", sort);
+    }
+    const qs = params.toString();
+    router.push(qs ? `/search?${qs}` : "/search");
+  };
 
   return (
-    <div className="flex flex-col gap-3 px-4 pt-2 pb-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <h1 className="text-foreground text-base font-medium sm:text-lg">
-            {countLabel} <span className="font-semibold">{categoryText}</span>{" "}
-            near {locationLabel}
-          </h1>
+    <div className="container-frame px-4 pt-2 pb-4 sm:px-6 lg:px-8">
+      {/* Count, chips and sort share one row; chips wrap before the sort pill. */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+        <h1 className="text-surface-ink shrink-0 text-sm">
+          {totalCount.toLocaleString()}{" "}
+          <span className="font-semibold">{categoryLabel(query.category)}</span>{" "}
+          near {formatLocationLabel(query.location || "London")}
+        </h1>
 
-          {chips.length > 0 ? (
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {chips.map((chip) => (
-                <li key={chip.id}>
-                  <button
-                    type="button"
-                    onClick={() => removeChip(chip.id)}
-                    className="bg-muted text-foreground inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors hover:bg-neutral-200"
-                  >
-                    {chip.label}
-                    <X className="size-3.5" aria-hidden />
-                    <span className="sr-only">Remove {chip.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
+        {chips.length > 0 ? (
+          <ul className="flex flex-wrap items-center gap-2">
+            {chips.map((chip) => (
+              <li key={chip.id}>
+                <button
+                  type="button"
+                  onClick={() => removeChip(chip.id)}
+                  className={`${PILL_BASE} hover:bg-muted gap-2 px-3.5 transition-colors`}
+                >
+                  {chip.label}
+                  <X className="text-control-chevron size-3.5" aria-hidden />
+                  <span className="sr-only">Remove {chip.label}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
-        <label className="text-muted-foreground relative inline-flex shrink-0 items-center gap-1 text-sm">
+        <label
+          className={`${PILL_BASE} relative ml-auto gap-1.5 pr-3 pl-3.5`}
+          aria-label="Sort results"
+        >
+          <ArrowUpDown className="size-3.5 shrink-0" aria-hidden />
           Sort by:
           <select
-            className="text-foreground appearance-none bg-transparent pr-5 font-medium outline-none"
-            value={query.sort || "recommended"}
-            onChange={(event) => {
-              const params = new URLSearchParams(window.location.search);
-              if (event.target.value === "recommended") {
-                params.delete("sort");
-              } else {
-                params.set("sort", event.target.value);
-              }
-              const qs = params.toString();
-              router.push(qs ? `/search?${qs}` : "/search");
-            }}
+            value={query.sort}
+            onChange={(event) => changeSort(event.target.value)}
+            className="text-surface-ink cursor-pointer appearance-none bg-transparent pr-4 text-[13px] outline-none"
           >
             {SORT_OPTIONS.map((option) => (
               <option key={option.id} value={option.id}>
@@ -92,9 +97,7 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
             ))}
           </select>
           <ChevronDown
-            className={cn(
-              "pointer-events-none absolute top-1/2 right-0 size-3.5 -translate-y-1/2",
-            )}
+            className="text-control-chevron pointer-events-none absolute right-3 size-3.5"
             aria-hidden
           />
         </label>

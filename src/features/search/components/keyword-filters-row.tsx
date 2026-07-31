@@ -25,8 +25,8 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
-      <label className="border-border bg-surface-white relative flex h-11 min-w-0 flex-1 items-center rounded-lg border">
+    <div className="flex items-center gap-3 px-4 py-1 sm:px-6 lg:px-8">
+      <label className="bg-surface-white relative flex h-11 min-w-0 flex-1 items-center rounded-[10px] border">
         <Search
           className="text-muted-foreground pointer-events-none absolute left-3 size-4"
           aria-hidden
@@ -43,14 +43,14 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
           }}
           placeholder="Add keywords..."
           aria-label="Add keywords"
-          className="text-foreground placeholder:text-muted-foreground h-full w-full rounded-lg bg-transparent pr-3 pl-10 text-sm outline-none"
+          className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 pl-10 text-sm outline-none"
         />
       </label>
 
       <button
         type="button"
         disabled={isPending}
-        className="border-border text-foreground hover:bg-muted flex h-11 shrink-0 items-center gap-2 rounded-lg border px-4 text-sm font-medium transition-colors"
+        className="border-border text-surface-ink hover:bg-muted flex h-11 shrink-0 items-center gap-2 rounded-lg border px-4 text-sm font-medium transition-colors"
       >
         <SlidersHorizontal className="size-4" aria-hidden />
         Filters

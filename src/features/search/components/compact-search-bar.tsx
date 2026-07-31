@@ -62,7 +62,7 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   return (
     <div
       className={cn(
-        "border-border bg-surface-white flex h-12 max-w-full items-center rounded-full border pr-1.5 pl-5 shadow-sm",
+        " bg-surface-white flex h-12 max-w-full items-center rounded-[10px] shadow-md",
         className,
       )}
     >
@@ -71,7 +71,7 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
           key={segment}
           type="button"
           className={cn(
-            "text-foreground truncate px-3 text-sm font-medium",
+            "text-surface-ink truncate px-3 text-sm font-medium",
             index > 0 && "border-border border-l",
           )}
         >
@@ -85,7 +85,7 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
         aria-busy={isPending}
         disabled={isPending}
         onClick={handleSearch}
-        className="bg-brand-red text-surface-white ml-2 flex size-9 shrink-0 items-center justify-center rounded-full transition-opacity hover:opacity-90 disabled:opacity-70"
+        className="bg-brand-red text-surface-white ml-2 flex size-9 shrink-0 items-center justify-center rounded-[10px] transition-opacity hover:opacity-90 disabled:opacity-70"
       >
         <Search className="size-4" strokeWidth={2} aria-hidden />
       </button>

@@ -32,7 +32,7 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
   };
 
   return (
-    <div className="border-border border-b">
+    <div className="border-[#E6E6E6] border-y">
       <div className="container-frame flex items-center gap-2 px-4 py-2 sm:px-6 lg:px-8">
         <button
           type="button"
@@ -72,9 +72,7 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
                 <span
                   className={cn(
                     "text-[11px] leading-tight whitespace-nowrap",
-                    isActive
-                      ? "font-semibold"
-                      : "text-control-idle-label font-medium",
+                    isActive ? "font-semibold" : "text-surface-ink font-medium",
                   )}
                 >
                   {label}

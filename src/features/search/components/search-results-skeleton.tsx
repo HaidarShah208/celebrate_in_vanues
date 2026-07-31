@@ -5,7 +5,7 @@ export function SearchResultsSkeleton() {
       aria-busy
       aria-label="Loading search results"
     >
-      <div className="border-topbar-border shadow-topbar h-[88px] border-b">
+      <div className="border-border shadow-topbar h-[88px] border-b">
         <div className="container-frame flex h-full items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="bg-muted h-8 w-32 animate-pulse rounded" />
           <div className="bg-muted hidden h-12 w-[360px] animate-pulse rounded-full md:block" />

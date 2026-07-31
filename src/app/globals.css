@@ -56,8 +56,6 @@
   /* Unselected segmented-control tab, as used by the mobile hero search tabs */
   --control-idle: #edeef2;
   --control-idle-label: #5e5e5e;
-  /* The search top bar's own hairline, one step lighter than --border */
-  --topbar-border: #e9e9e9;
   /* Duotone search icons ship at this grey; the mask recolours them */
   --icon-idle: #828282;
 
@@ -208,7 +206,6 @@
   --color-dot-idle: var(--dot-idle);
   --color-control-idle: var(--control-idle);
   --color-control-idle-label: var(--control-idle-label);
-  --color-topbar-border: var(--topbar-border);
   --color-icon-idle: var(--icon-idle);
 
   /* Semantic */
