@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  BadgeCheck,
   Car,
   ChevronLeft,
   ChevronRight,
   Heart,
+  type LucideIcon,
   Maximize2,
   MapPin,
-  Share2,
+  Share,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -17,11 +17,36 @@ import { useState } from "react";
 import type { Venue } from "@/features/home/data/featured-venues";
 import { cn } from "@/lib/utils";
 
+/** 30px glass circle used by the share, save and gallery-step controls. */
 const IMAGE_ACTION =
-  "flex size-7 items-center justify-center rounded-full bg-surface-ink/45 text-surface-white backdrop-blur-sm transition-colors hover:bg-surface-ink/65";
+  "absolute flex size-[30px] items-center justify-center rounded-full bg-surface-ink/50 text-surface-white backdrop-blur-[2px] transition-colors hover:bg-surface-ink/65";
 
-const GALLERY_ARROW =
-  "absolute top-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100";
+type AmenityChipProps = {
+  icon?: LucideIcon;
+  /** Each glyph has its own size in the design: 14, 15 and 16px. */
+  iconClassName?: string;
+  label: string;
+};
+
+/**
+ * Filled pill from the card spec: 28px tall, #F9FAFB fill, no border, #364153
+ * ink. Widths come out of the content, which reproduces the 59/86/98px chips
+ * without hardcoding them.
+ */
+function AmenityChip({ icon: Icon, iconClassName, label }: AmenityChipProps) {
+  return (
+    <li className="bg-chip-fill text-chip-ink flex h-[28px] shrink-0 items-center gap-[5px] rounded-full px-[7px]">
+      {Icon ? (
+        <Icon
+          className={cn("shrink-0", iconClassName)}
+          strokeWidth={1.5}
+          aria-hidden
+        />
+      ) : null}
+      <span className="text-[10px] leading-6 font-medium">{label}</span>
+    </li>
+  );
+}
 
 type VenueCardProps = {
   venue: Venue;
@@ -44,11 +69,12 @@ export function VenueCard({ venue, className }: VenueCardProps) {
   return (
     <article
       className={cn(
-        "group bg-surface-white flex shrink-0 basis-[80%] snap-start flex-col overflow-hidden rounded-2xl sm:basis-[47%] lg:basis-[calc((100%-4.5rem)/4)]",
+        "group flex shrink-0 basis-[80%] snap-start flex-col sm:basis-[47%] lg:basis-[calc((100%-4.5rem)/4)]",
         className,
       )}
     >
-      <div className="relative aspect-16/10 w-full overflow-hidden">
+      {/* 300x187 in the design, which is exactly 16:10 */}
+      <div className="bg-muted relative aspect-16/10 w-full overflow-hidden rounded-t-[20px]">
         {venue.gallery.map((image, index) => (
           <Image
             key={index}
@@ -64,63 +90,59 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         ))}
 
         {venue.isVerified && (
-          <span className="bg-surface-ink/60 text-surface-white absolute top-3 left-3 flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] leading-none font-medium backdrop-blur-sm">
-            <BadgeCheck className="size-3" aria-hidden />
+          <span className="bg-surface-ink/50 text-surface-white absolute top-[9px] left-[10px] flex h-[30px] items-center rounded-[92px] px-[15px] text-[11.05px] leading-[18px] font-semibold tracking-[-0.03em] backdrop-blur-[2px]">
             Verified
           </span>
         )}
 
-        <div className="absolute top-3 right-3 flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Share venue"
-            className={IMAGE_ACTION}
-          >
-            <Share2 className="size-3.5" aria-hidden />
-          </button>
-          <button
-            type="button"
-            aria-label={isSaved ? "Remove from saved" : "Save venue"}
-            aria-pressed={isSaved}
-            onClick={() => setIsSaved((saved) => !saved)}
-            className={IMAGE_ACTION}
-          >
-            <Heart
-              className={cn(
-                "size-3.5",
-                isSaved && "fill-brand-red text-brand-red",
-              )}
-              aria-hidden
-            />
-          </button>
-        </div>
+        <button
+          type="button"
+          aria-label="Share venue"
+          className={cn(IMAGE_ACTION, "top-[9px] right-[43px]")}
+        >
+          <Share className="size-[15px]" strokeWidth={1.5} aria-hidden />
+        </button>
+        <button
+          type="button"
+          aria-label={isSaved ? "Remove from saved" : "Save venue"}
+          aria-pressed={isSaved}
+          onClick={() => setIsSaved((saved) => !saved)}
+          className={cn(IMAGE_ACTION, "top-[9px] right-[10px]")}
+        >
+          <Heart
+            className={cn("size-[15px]", isSaved && "fill-current")}
+            strokeWidth={1.5}
+            aria-hidden
+          />
+        </button>
 
+        {/* Design places these at y=89 of a 187px frame, just below centre */}
         <button
           type="button"
           aria-label="Previous photo"
           onClick={() => stepImage(-1)}
-          className={cn(GALLERY_ARROW, IMAGE_ACTION, "left-3")}
+          className={cn(IMAGE_ACTION, "top-[47.5%] left-[10px]")}
         >
-          <ChevronLeft className="size-4" aria-hidden />
+          <ChevronLeft className="size-5" strokeWidth={1.5} aria-hidden />
         </button>
         <button
           type="button"
           aria-label="Next photo"
           onClick={() => stepImage(1)}
-          className={cn(GALLERY_ARROW, IMAGE_ACTION, "right-3")}
+          className={cn(IMAGE_ACTION, "top-[47.5%] right-[10px]")}
         >
-          <ChevronRight className="size-4" aria-hidden />
+          <ChevronRight className="size-5" strokeWidth={1.5} aria-hidden />
         </button>
 
         <div
-          className="absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1"
+          className="absolute bottom-[12px] left-1/2 flex -translate-x-1/2 items-center gap-[3px]"
           aria-hidden
         >
           {venue.gallery.map((_, index) => (
             <span
               key={index}
               className={cn(
-                "size-1.5 rounded-full transition-colors",
+                "size-[5px] rounded-full transition-opacity",
                 index === imageIndex
                   ? "bg-surface-white"
                   : "bg-surface-white/50",
@@ -130,39 +152,41 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-surface-ink text-base leading-[1.35] font-semibold">
+      <div className="border-card-hairline bg-surface-white shadow-card-body flex flex-1 flex-col rounded-b-[20px] border px-[15px] pt-[18px] pb-[15px]">
+        <h3 className="text-surface-ink line-clamp-2 min-h-[48px] text-[16px] leading-6 font-semibold">
           {venue.title}
         </h3>
 
-        <p className="text-brand-red mt-1.5 flex items-center gap-1 text-xs">
-          <MapPin className="size-3.5 shrink-0" aria-hidden />
+        <p className="text-brand-red mt-[5px] flex h-6 items-center gap-[5px] text-xs">
+          <MapPin className="size-3.5 shrink-0" strokeWidth={1.5} aria-hidden />
           {venue.location}
         </p>
 
-        <ul className="text-muted-foreground mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px]">
-          <li className="flex items-center gap-1">
-            <Users className="size-3.5 shrink-0" aria-hidden />
-            {venue.guests}
-          </li>
-          <li className="flex items-center gap-1">
-            <Maximize2 className="size-3.5 shrink-0" aria-hidden />
-            {venue.area}
-          </li>
-          <li className="flex items-center gap-1">
-            <Car className="size-3.5 shrink-0" aria-hidden />
-            {venue.parking}
-          </li>
+        {/* One wrapping row: the three chips total 253px so "+N more" wraps to a
+            second line on its own, matching the two rows in the design. */}
+        <ul className="mt-[8px] flex flex-wrap items-center gap-x-[5px] gap-y-[7px]">
+          <AmenityChip
+            icon={Users}
+            iconClassName="size-[14px]"
+            label={venue.guests}
+          />
+          <AmenityChip
+            icon={Maximize2}
+            iconClassName="size-[15px]"
+            label={venue.area}
+          />
+          <AmenityChip
+            icon={Car}
+            iconClassName="size-4"
+            label={venue.parking}
+          />
+          <AmenityChip label={`+${venue.extraAmenities} more`} />
         </ul>
 
-        <p className="text-muted-foreground mt-2 text-[11px]">
-          +{venue.extraAmenities} more
-        </p>
-
-        <div className="border-border mt-auto flex items-center justify-between gap-2 border-t pt-3">
+        <div className="mt-auto flex items-center justify-between gap-2 pt-[17px]">
           <p className="text-muted-foreground text-xs">
             From{" "}
-            <span className="text-foreground text-[13px] font-semibold">
+            <span className="text-surface-ink text-[13px] font-semibold">
               ${venue.pricePerHour}/hour
             </span>
           </p>

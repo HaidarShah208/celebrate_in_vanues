@@ -52,7 +52,8 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
   };
 
   return (
-    <div className="container-frame px-4 pt-2 pb-4 sm:px-6 lg:px-8">
+    /* Padding comes from the results column that owns this row. */
+    <div className="pt-4 pb-4">
       {/* Count, chips and sort share one row; chips wrap before the sort pill. */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
         <h1 className="text-surface-ink shrink-0 text-sm">

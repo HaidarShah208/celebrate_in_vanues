@@ -29,15 +29,17 @@ export function SearchResultsView({
       <SearchHeader query={query} />
       <KeywordFiltersRow query={query} />
       <SpaceCategories query={query} />
-      <ResultsToolbar query={query} totalCount={totalCount} />
 
       {/* Gutters live on the results column so the map can run full-bleed to the
-          right edge with no rounding or vertical gap. */}
+          right edge with no rounding or vertical gap. The toolbar sits inside
+          that column too, so it never spans across the map. */}
       <div className="grid flex-1 grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
         <section
           aria-label="Venue results"
           className="min-w-0 px-4 pb-8 sm:px-6 lg:px-8"
         >
+          <ResultsToolbar query={query} totalCount={totalCount} />
+
           {venues.length === 0 ? (
             <SearchEmptyState locationLabel={locationLabel} />
           ) : (

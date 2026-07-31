@@ -60,6 +60,12 @@
   --icon-idle: #828282;
   /* Hairline between segments inside the compact search pill */
   --rule-divider: #dfdfdf;
+  /* Heavier rule under the search-page category strip */
+  --rule-strong: #d0d0d0;
+  /* Venue card: body outline and the filled amenity chips it contains */
+  --card-hairline: #e5e5e5;
+  --chip-fill: #f9fafb;
+  --chip-ink: #364153;
 
   /* --- Neutrals ---------------------------------------------------------- */
   --neutral-100: #f5f5f5;
@@ -160,6 +166,7 @@
   --venuze-shadow-panel: 0 0 34px rgb(0 0 0 / 0.25);
   --venuze-shadow-control: 0 1px 4px rgb(0 0 0 / 0.25);
   --venuze-shadow-topbar: 0 4px 10px rgb(0 0 0 / 0.1);
+  --venuze-shadow-card-body: 0 2px 3px rgb(0 0 0 / 0.05);
 }
 
 .dark {
@@ -176,8 +183,6 @@
   --muted-foreground: var(--neutral-400);
 
   --accent-foreground: var(--surface-ink);
-
-  --border: #2a2a2a;
 }
 
 @theme inline {
@@ -210,6 +215,10 @@
   --color-control-idle-label: var(--control-idle-label);
   --color-icon-idle: var(--icon-idle);
   --color-rule-divider: var(--rule-divider);
+  --color-rule-strong: var(--rule-strong);
+  --color-card-hairline: var(--card-hairline);
+  --color-chip-fill: var(--chip-fill);
+  --color-chip-ink: var(--chip-ink);
 
   /* Semantic */
   --color-background: var(--background);
@@ -239,6 +248,7 @@
   --shadow-card: var(--venuze-shadow-card);
   --shadow-panel: var(--venuze-shadow-panel);
   --shadow-topbar: var(--venuze-shadow-topbar);
+  --shadow-card-body: var(--venuze-shadow-card-body);
   --drop-shadow-control: var(--venuze-shadow-control);
 
   /* Typography */
@@ -246,8 +256,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  border-color: var(--border);
+/* Must stay inside @layer base: unlayered rules outrank every Tailwind
+   utility, which would make `border-<colour>` classes silently do nothing. */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 html {
