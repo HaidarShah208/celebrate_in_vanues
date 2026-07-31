@@ -32,15 +32,16 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
   };
 
   return (
-    <div className="border-[#E6E6E6] border-y">
-      <div className="container-frame flex items-center gap-2 px-4 py-2 sm:px-6 lg:px-8">
+    /* Bottom edge only — the header above already draws the line above this. */
+    <div className="border-border border-b">
+      <div className="container-frame flex items-center gap-2 px-4 py-0.5 sm:px-6 lg:px-8">
         <button
           type="button"
           aria-label="Previous categories"
           onClick={() => scrollBy(-1)}
           className={ARROW_BASE}
         >
-          <ArrowLeft className="size-5" strokeWidth={1.5} aria-hidden />
+          <ArrowLeft className="size-5" strokeWidth={2} aria-hidden />
         </button>
 
         <div
@@ -62,16 +63,19 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
                   router.push(buildSearchHref({ ...query, category: id }))
                 }
                 className={cn(
-                  "flex w-[92px] shrink-0 snap-start flex-col items-center justify-center gap-1.5 rounded-lg px-2 py-2 transition-colors",
+                  // flex-1 spreads the tiles across the full width; the min
+                  // width keeps labels readable and lets the row scroll instead
+                  // of crushing them on narrow screens.
+                  "flex flex-1 cursor-pointer w-28.25 h-19.75 snap-start flex-col items-center justify-center gap-1.5 rounded-md px-2 py-2 transition-colors",
                   isActive
-                    ? "bg-surface-blush-soft text-brand-red"
-                    : "text-icon-idle hover:bg-muted",
+                    ? "bg-[#F4F4F4] text-[#FF5037]"
+                    : "text-icon-idle hover:bg-[#F4F4F4]/50",
                 )}
               >
                 <MaskIcon src={icon.src} className="size-6" />
                 <span
                   className={cn(
-                    "text-[11px] leading-tight whitespace-nowrap",
+                    "text-sm leading-tight whitespace-nowrap",
                     isActive ? "font-semibold" : "text-surface-ink font-medium",
                   )}
                 >

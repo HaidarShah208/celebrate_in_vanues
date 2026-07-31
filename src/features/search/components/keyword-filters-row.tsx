@@ -13,6 +13,12 @@ type KeywordFiltersRowProps = {
   query: SearchQuery;
 };
 
+/**
+ * Full-bleed keyword bar. The input is borderless and sits directly on the row,
+ * with only a hairline separating it from the Filters control. `container-frame`
+ * matches the header so the search icon and the Filters label line up with the
+ * logo and the account buttons above them.
+ */
 export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -25,36 +31,40 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-1 sm:px-6 lg:px-8">
-      <label className="bg-surface-white relative flex h-11 min-w-0 flex-1 items-center rounded-[10px] border">
-        <Search
-          className="text-muted-foreground pointer-events-none absolute left-3 size-4"
-          aria-hidden
-        />
-        <input
-          type="search"
-          value={keyword}
-          onChange={(event) => setKeyword(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              submitKeyword();
-            }
-          }}
-          placeholder="Add keywords..."
-          aria-label="Add keywords"
-          className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 pl-10 text-sm outline-none"
-        />
-      </label>
+    <div className="border-border border-b">
+      <div className="container-frame flex h-16 items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <label className="relative flex h-full min-w-0 flex-1 items-center">
+          <Search
+            className="text-surface-ink pointer-events-none absolute left-0 size-6"
+            aria-hidden
+          />
+          <input
+            type="search"
+            value={keyword}
+            onChange={(event) => setKeyword(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                submitKeyword();
+              }
+            }}
+            placeholder="Add keywords..."
+            aria-label="Add keywords"
+            className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 pl-8 text-sm outline-none"
+          />
+        </label>
 
-      <button
-        type="button"
-        disabled={isPending}
-        className="border-border text-surface-ink hover:bg-muted flex h-11 shrink-0 items-center gap-2 rounded-lg border px-4 text-sm font-medium transition-colors"
-      >
-        <SlidersHorizontal className="size-4" aria-hidden />
-        Filters
-      </button>
+        <span className="bg-border h-6 w-px shrink-0" aria-hidden />
+
+        <button
+          type="button"
+          disabled={isPending}
+          className="text-surface-ink flex shrink-0 items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
+        >
+          <SlidersHorizontal className="size-[18px]" aria-hidden />
+          Filters
+        </button>
+      </div>
     </div>
   );
 }

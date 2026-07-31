@@ -14,17 +14,17 @@ export function SearchResultsSkeleton() {
       </div>
 
       <div className="border-border container-frame flex gap-1 border-b px-4 py-2 sm:px-6 lg:px-8">
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 11 }).map((_, index) => (
           <div
             key={index}
-            className="bg-muted h-[60px] w-[92px] shrink-0 animate-pulse rounded-lg"
+            className="bg-muted h-[60px] min-w-[88px] flex-1 animate-pulse rounded-lg"
           />
         ))}
       </div>
 
-      <div className="flex gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <div className="bg-muted h-11 flex-1 animate-pulse rounded-lg" />
-        <div className="bg-muted h-11 w-28 animate-pulse rounded-lg" />
+      <div className="border-border container-frame flex h-16 items-center gap-4 border-b px-4 sm:px-6 lg:px-8">
+        <div className="bg-muted h-4 flex-1 animate-pulse rounded" />
+        <div className="bg-muted h-4 w-20 animate-pulse rounded" />
       </div>
 
       <div className="px-4 pt-2 pb-4 sm:px-6 lg:px-8">
