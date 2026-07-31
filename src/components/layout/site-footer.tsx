@@ -15,7 +15,7 @@ import { siteConfig } from "@/config/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="bg-surface-ink text-surface-white rounded-t-[40px] pt-24 lg:pt-31.25">
+    <footer className="bg-surface-ink  text-surface-white rounded-t-[50px] pt-24 lg:pt-31.25">
       <div className="container-frame px-4 pb-10 sm:px-6 lg:px-20">
         <div className="flex flex-col gap-12 xl:flex-row xl:justify-between xl:gap-10">
           <div className="xl:flex-1">

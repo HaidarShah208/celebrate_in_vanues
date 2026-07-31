@@ -6,7 +6,7 @@ const TITLE_TONES = {
 } as const;
 
 const DESCRIPTION_TONES = {
-  light: "text-muted-foreground",
+  light: "text-black",
   dark: "text-surface-white/80",
 } as const;
 
@@ -42,7 +42,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "text-sm leading-[1.6] font-normal text-black lg:text-xl",
+            "text-sm leading-[1.6] font-normal lg:text-xl",
             DESCRIPTION_TONES[tone],
           )}
         >

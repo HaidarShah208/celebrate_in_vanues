@@ -171,21 +171,9 @@
   --venuze-shadow-card-body: 0 2px 3px rgb(0 0 0 / 0.05);
 }
 
-.dark {
-  --background: var(--surface-ink);
-  --foreground: var(--surface-white);
-
-  --card: var(--surface-ink-soft);
-  --card-foreground: var(--surface-white);
-
-  --secondary: var(--surface-ink-soft);
-  --secondary-foreground: var(--surface-white);
-
-  --muted: var(--surface-ink-soft);
-  --muted-foreground: var(--neutral-400);
-
-  --accent-foreground: var(--surface-ink);
-}
+/* Every screen is designed light-only. A `.dark` palette used to live here, but
+   it turned the page background black, which hid the footer's rounded top edge
+   and darkened every hairline for anyone whose OS prefers dark mode. */
 
 @theme inline {
   /* Brand */
