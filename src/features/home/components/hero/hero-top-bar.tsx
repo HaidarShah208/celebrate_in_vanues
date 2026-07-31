@@ -1,7 +1,15 @@
 import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { ChevronDownMini, UserMini } from "@/components/ui/icons";
 import { Logo, LogoMark } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LogoutMenuItem } from "@/features/auth/components/logout-menu-item";
 import { cn } from "@/lib/utils";
 const CONTROL_BASE =
   "flex h-10 items-center justify-center rounded-lg bg-panel text-sm leading-[140%] font-semibold text-ink lg:text-brand-red";
@@ -26,13 +34,18 @@ export function HeroTopBar() {
             <ChevronDownMini className="text-control-chevron" />
           </button>
 
-          <button
-            type="button"
-            aria-label="Menu"
-            className={cn(CONTROL_BASE, "size-10 rounded-full lg:hidden")}
-          >
-            <Menu className="size-5" aria-hidden />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                aria-label="Account menu"
+                className={cn(CONTROL_BASE, "size-10 rounded-full lg:hidden")}
+              >
+                <Menu className="size-5" aria-hidden />
+              </button>
+            </DropdownMenuTrigger>
+            <AccountMenu />
+          </DropdownMenu>
 
           <button
             type="button"
@@ -43,15 +56,32 @@ export function HeroTopBar() {
             <ChevronDownMini className="text-control-chevron" />
           </button>
 
-          <button
-            type="button"
-            aria-label="Account"
-            className={cn(CONTROL_BASE, "hidden w-11 px-3 lg:flex")}
-          >
-            <UserMini />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                aria-label="Account"
+                className={cn(CONTROL_BASE, "hidden w-11 px-3 lg:flex")}
+              >
+                <UserMini />
+              </button>
+            </DropdownMenuTrigger>
+            <AccountMenu />
+          </DropdownMenu>
         </nav>
       </div>
     </header>
+  );
+}
+
+function AccountMenu() {
+  return (
+    <DropdownMenuContent align="end" className="min-w-50">
+      <DropdownMenuItem>My profile</DropdownMenuItem>
+      <DropdownMenuItem>My bookings</DropdownMenuItem>
+      <DropdownMenuItem>Saved venues</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <LogoutMenuItem />
+    </DropdownMenuContent>
   );
 }

@@ -50,7 +50,7 @@ export function SiteFooter() {
           <FooterContactForm className="w-full lg:mt-4 xl:w-129.5 xl:shrink-0" />
         </div>
 
-        <div className="border-surface-white/8 mt-10 flex flex-col items-center gap-6 border-t pt-9 sm:flex-row sm:justify-between">
+        <div className="border-surface-white/20 mt-10 flex flex-col items-center gap-6 border-t pt-9 sm:flex-row sm:justify-between">
           <ul className="flex items-center gap-8">
             {FOOTER_SOCIAL_LINKS.map(({ label, href, Icon }) => (
               <li key={label}>

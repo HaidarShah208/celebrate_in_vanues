@@ -29,7 +29,7 @@ export function HeroSearchField({
         <button
           type="button"
           aria-label={label}
-          className="group cursor-pointer flex w-full flex-col items-start gap-[5px] py-3 text-left outline-none lg:flex-1 lg:px-[5px] lg:py-0"
+          className="group flex w-full cursor-pointer flex-col items-start gap-[5px] py-3 text-left outline-none lg:flex-1 lg:px-[5px] lg:py-0"
         >
           <span className="text-field-label w-full text-sm leading-[21px] font-normal">
             {label}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import avatarImage from "@/assets/home/user1.png";
+import { LogoutMenuItem } from "@/features/auth/components/logout-menu-item";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,14 +16,25 @@ import { ChevronDownMini, UserMini } from "@/components/ui/icons";
 import { Logo, LogoMark } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { CompactSearchBar } from "@/features/search/components/compact-search-bar";
-import {
-  ACCOUNT_MENU_ITEMS,
-  CURRENT_USER,
-  LANGUAGE_OPTIONS,
-  LISTING_MENU_ITEMS,
-} from "@/features/search/data/header-menus";
 import { cn } from "@/lib/utils";
 import type { SearchQuery } from "@/types/search";
+
+const CURRENT_USER = { name: "John Snow" } as const;
+const LISTING_MENU_ITEMS = [
+  "List your venue",
+  "List your service",
+  "Partner with us",
+] as const;
+const ACCOUNT_MENU_ITEMS = [
+  "My profile",
+  "My bookings",
+  "Saved venues",
+] as const;
+const LANGUAGE_OPTIONS = [
+  { code: "en", label: "English" },
+  { code: "ar", label: "العربية" },
+  { code: "fr", label: "Français" },
+] as const;
 
 const CONTROL_BASE =
   "flex h-10 items-center justify-center rounded-lg border border-border bg-panel text-sm leading-[140%] font-semibold text-brand-red outline-none";
@@ -36,10 +48,12 @@ type SearchHeaderProps = {
 
 function MobileAccountMenuContent() {
   return (
-    <DropdownMenuContent align="end" className="min-w-[220px]">
+    <DropdownMenuContent align="end" className="min-w-55">
       {ACCOUNT_MENU_ITEMS.map((item) => (
         <DropdownMenuItem key={item}>{item}</DropdownMenuItem>
       ))}
+      <DropdownMenuSeparator />
+      <LogoutMenuItem />
       <DropdownMenuSeparator />
       {LISTING_MENU_ITEMS.map((item) => (
         <DropdownMenuItem key={item}>{item}</DropdownMenuItem>
@@ -58,7 +72,7 @@ export function SearchHeader({ query }: SearchHeaderProps) {
   return (
     <header className="bg-panel shadow-topbar sticky top-0 z-30">
       <div className="md:hidden">
-        <div className="flex h-[68px] items-center justify-between gap-3 px-4">
+        <div className="flex h-17 items-center justify-between gap-3 px-4">
           <Link href="/" aria-label="Home" className="shrink-0">
             <LogoMark priority className="w-10" />
           </Link>
@@ -120,7 +134,7 @@ export function SearchHeader({ query }: SearchHeaderProps) {
                 <ChevronDownMini className={CHEVRON} />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="min-w-[220px]">
+            <DropdownMenuContent align="end" className="min-w-55">
               {LISTING_MENU_ITEMS.map((item) => (
                 <DropdownMenuItem key={item}>{item}</DropdownMenuItem>
               ))}
@@ -138,7 +152,7 @@ export function SearchHeader({ query }: SearchHeaderProps) {
                 <ChevronDownMini className={CHEVRON} />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="min-w-[180px]">
+            <DropdownMenuContent align="end" className="min-w-45">
               {LANGUAGE_OPTIONS.map((language) => (
                 <DropdownMenuItem key={language.code}>
                   {language.label}
@@ -157,10 +171,12 @@ export function SearchHeader({ query }: SearchHeaderProps) {
                 <UserMini />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="min-w-[200px]">
+            <DropdownMenuContent align="end" className="min-w-50">
               {ACCOUNT_MENU_ITEMS.map((item) => (
                 <DropdownMenuItem key={item}>{item}</DropdownMenuItem>
               ))}
+              <DropdownMenuSeparator />
+              <LogoutMenuItem />
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
