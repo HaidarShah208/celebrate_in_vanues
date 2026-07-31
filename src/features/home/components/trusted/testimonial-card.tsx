@@ -6,7 +6,7 @@ type TestimonialCardProps = {
 };
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <article className="bg-surface-white flex shrink-0 basis-[88%] snap-start overflow-hidden rounded-xl sm:basis-[72%] lg:min-h-75 lg:basis-[calc((100%-1.5rem)/2)]">
+    <article className="bg-panel flex shrink-0 basis-[88%] snap-start overflow-hidden rounded-xl sm:basis-[72%] lg:min-h-75 lg:basis-[calc((100%-1.5rem)/2)]">
       <div className="relative w-32.5 shrink-0 self-stretch sm:w-47.5 lg:w-59.25">
         <Image
           src={testimonial.portrait}
@@ -18,12 +18,12 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
       </div>
 
       <blockquote className="flex flex-1 flex-col justify-center p-5 sm:p-6 lg:px-7 lg:py-8">
-        <p className="leading-[1.55] font-normal text-black md:text-[11px] lg:text-xl">
+        <p className="text-ink leading-[1.55] font-normal md:text-[11px] lg:text-xl">
           {testimonial.quote}
         </p>
 
         <footer className="mt-4">
-          <p className="font-bold text-black md:text-[10.38px] lg:text-base">
+          <p className="text-ink font-bold md:text-[10.38px] lg:text-base">
             {testimonial.author}
           </p>
           <StarRating rating={testimonial.rating} className="mt-2" />

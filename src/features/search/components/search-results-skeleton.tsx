@@ -4,7 +4,7 @@ function VenueCardSkeleton() {
     <div className="flex flex-col">
       <div className={`${BAR} aspect-16/10 w-full rounded-t-[20px]`} />
 
-      <div className="border-card-hairline bg-surface-white flex flex-1 flex-col rounded-b-[20px] border px-[15px] pt-[18px] pb-[15px]">
+      <div className="border-card-hairline bg-panel flex flex-1 flex-col rounded-b-[20px] border px-[15px] pt-[18px] pb-[15px]">
         <div className={`${BAR} h-5 w-[92%]`} />
         <div className={`${BAR} mt-[4px] h-5 w-[64%]`} />
 
@@ -30,7 +30,7 @@ function VenueCardSkeleton() {
 export function SearchResultsSkeleton() {
   return (
     <div
-      className="bg-surface-white flex flex-1 flex-col"
+      className="bg-background flex flex-1 flex-col"
       aria-busy
       aria-label="Loading search results"
     >

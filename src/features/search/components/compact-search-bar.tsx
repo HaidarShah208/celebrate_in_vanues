@@ -74,23 +74,21 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   return (
     <div
       className={cn(
-        "drop-shadow-control bg-surface-white flex h-11 w-full max-w-[430px] items-center rounded-[10px] pr-[7px] pl-[25px]",
+        "drop-shadow-control bg-panel flex h-11 w-full max-w-107.5 items-center rounded-[10px] pr-1.75 pl-6.25",
         className,
       )}
     >
-      <div className="flex min-w-0 flex-1 items-center justify-center gap-[30px]">
+      <div className="flex min-w-0 flex-1 items-center justify-center gap-7.5">
         {segments.map((segment, index) => (
           <Fragment key={segment.id}>
             {index > 0 ? (
-              <span className="bg-rule-divider h-[17px] w-px shrink-0" />
+              <span className="bg-rule-divider h-4.25 w-px shrink-0" />
             ) : null}
             <button
               type="button"
               className={cn(
-                "truncate text-[14px] leading-[21px] font-medium",
-                segment.isPlaceholder
-                  ? "text-muted-foreground"
-                  : "text-surface-ink",
+                "truncate text-[14px] leading-5.25 font-medium",
+                segment.isPlaceholder ? "text-muted-foreground" : "text-ink",
               )}
             >
               {segment.label}

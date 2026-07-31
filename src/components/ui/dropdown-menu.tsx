@@ -23,7 +23,7 @@ export function DropdownMenuContent({
         align={align}
         collisionPadding={12}
         className={cn(
-          "venuze-menu border-border bg-surface-white shadow-panel z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-(--radix-dropdown-menu-trigger-width) overflow-y-auto rounded-xl border p-1.5",
+          "venuze-menu border-border bg-panel shadow-panel z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-(--radix-dropdown-menu-trigger-width) overflow-y-auto rounded-xl border p-1.5",
           className,
         )}
         {...props}
@@ -39,7 +39,7 @@ export function DropdownMenuItem({
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
-        "text-surface-ink data-highlighted:bg-muted flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium outline-none select-none",
+        "text-ink data-highlighted:bg-muted flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium outline-none select-none",
         className,
       )}
       {...props}
@@ -55,7 +55,7 @@ export function DropdownMenuRadioItem({
   return (
     <DropdownMenuPrimitive.RadioItem
       className={cn(
-        "text-surface-ink data-highlighted:bg-muted data-[state=checked]:text-brand-red flex cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm font-medium outline-none select-none",
+        "text-ink data-highlighted:bg-muted data-[state=checked]:text-brand-red flex cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm font-medium outline-none select-none",
         className,
       )}
       {...props}

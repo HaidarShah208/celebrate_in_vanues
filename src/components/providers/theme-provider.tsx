@@ -51,7 +51,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [theme, mounted, setResolvedTheme]);
   return children;
 }
-export const themeInitScript = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var raw=localStorage.getItem(k);var theme="system";if(raw){var p=JSON.parse(raw);if(p&&p.state&&p.state.theme){theme=p.state.theme;}}var dark=theme==="dark"||(theme==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.toggle("dark",dark);r.style.colorScheme=dark?"dark":"light";}catch(e){}})();`;
+export const themeInitScript = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var raw=localStorage.getItem(k);var theme="light";if(raw){var p=JSON.parse(raw);if(p&&p.state&&p.state.theme){theme=p.state.theme;}}var dark=theme==="dark"||(theme==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.toggle("dark",dark);r.style.colorScheme=dark?"dark":"light";}catch(e){}})();`;
 export function setThemePreference(theme: Theme) {
   useThemeStore.getState().setTheme(theme);
 }

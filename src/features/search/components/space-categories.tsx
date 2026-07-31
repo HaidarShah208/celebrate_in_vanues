@@ -54,15 +54,15 @@ export function SpaceCategories({ query }: SpaceCategoriesProps) {
                 className={cn(
                   "flex h-19.75 w-28.25 flex-1 cursor-pointer snap-start flex-col items-center justify-center gap-1.5 rounded-md px-2 py-2 transition-colors",
                   isActive
-                    ? "bg-[#F4F4F4] text-[#FF5037]"
-                    : "text-icon-idle hover:bg-[#F4F4F4]/50",
+                    ? "bg-muted text-brand-red"
+                    : "text-icon-idle hover:bg-muted/50",
                 )}
               >
                 <MaskIcon src={icon.src} className="size-6" />
                 <span
                   className={cn(
                     "text-sm leading-tight whitespace-nowrap",
-                    isActive ? "font-semibold" : "text-surface-ink font-medium",
+                    isActive ? "font-semibold" : "text-ink font-medium",
                   )}
                 >
                   {label}

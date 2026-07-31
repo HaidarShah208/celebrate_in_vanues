@@ -11,10 +11,10 @@ export function SearchEmptyState() {
         aria-hidden
       />
 
-      <h2 className="text-surface-ink mt-6 text-[15px] leading-6 font-semibold">
+      <h2 className="text-ink mt-6 text-[15px] leading-6 font-semibold">
         No data found for your search.
       </h2>
-      <p className="text-muted-foreground mt-1 max-w-[280px] text-[13px] leading-5">
+      <p className="text-muted-foreground mt-1 max-w-70 text-[13px] leading-5">
         Explore other options or clear filters to see more results.
       </p>
     </div>

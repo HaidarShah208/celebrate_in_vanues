@@ -24,7 +24,7 @@ export function HeroSearchTabs({
       aria-label="Search type"
       className={cn(
         "relative z-10 flex items-center gap-2",
-        "lg:bg-surface-white lg:shadow-panel lg:mx-auto lg:h-[55px] lg:w-[264px] lg:gap-[10px] lg:rounded-lg lg:p-[7px]",
+        "lg:bg-panel lg:shadow-panel lg:mx-auto lg:h-[55px] lg:w-[264px] lg:gap-[10px] lg:rounded-lg lg:p-[7px]",
       )}
     >
       {HERO_SEARCH_TABS.map(({ id, label }) => {
@@ -41,7 +41,7 @@ export function HeroSearchTabs({
               "flex h-11 flex-1 items-center justify-center gap-[7px] rounded-lg text-sm leading-[21px] font-semibold transition-colors lg:h-10",
               isActive
                 ? "bg-brand-red text-surface-white"
-                : "bg-control-idle text-control-idle-label lg:text-surface-ink lg:hover:bg-muted lg:bg-transparent",
+                : "bg-control-idle text-control-idle-label lg:text-ink lg:hover:bg-muted lg:bg-transparent",
             )}
           >
             <Icon className="size-5 shrink-0" strokeWidth={2} aria-hidden />

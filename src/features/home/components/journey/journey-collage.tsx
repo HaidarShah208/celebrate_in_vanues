@@ -44,7 +44,7 @@ export function JourneyCollage() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="bg-surface-white shadow-panel flex size-20 items-center justify-center rounded-full lg:size-37.5">
+        <span className="bg-panel shadow-panel flex size-20 items-center justify-center rounded-full lg:size-37.5">
           <Image
             src={perfectVenueMark}
             alt=""

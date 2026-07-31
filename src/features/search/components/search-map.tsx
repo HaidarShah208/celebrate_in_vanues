@@ -43,7 +43,7 @@ export function SearchMap({ venues, className }: SearchMapProps) {
         type="button"
         onClick={toggleFullscreen}
         aria-label="Toggle fullscreen map"
-        className="border-border bg-surface-white text-surface-ink absolute top-4 right-4 z-500 flex size-9 items-center justify-center rounded-lg border shadow-sm transition-opacity hover:opacity-80"
+        className="border-border bg-panel text-ink absolute top-4 right-4 z-500 flex size-9 items-center justify-center rounded-lg border shadow-sm transition-opacity hover:opacity-80"
       >
         <Maximize className="size-4" aria-hidden />
       </button>

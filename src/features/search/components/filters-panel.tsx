@@ -56,7 +56,7 @@ function FilterChip({ label, selected, onClick }: ChipProps) {
         "rounded-full px-3.5 py-2 text-[13px] leading-none font-medium transition-colors",
         selected
           ? "bg-surface-blush-soft text-brand-red"
-          : "bg-chip-fill text-surface-ink hover:bg-muted",
+          : "bg-chip-fill text-ink hover:bg-muted",
       )}
     >
       {label}
@@ -86,15 +86,15 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
 
         <Dialog.Content
           aria-describedby={undefined}
-          className="venuze-drawer bg-surface-white shadow-panel fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-163.5 flex-col focus:outline-none"
+          className="venuze-drawer bg-panel shadow-panel fixed inset-y-0 right-0 z-50 flex h-dvh w-full max-w-163.5 flex-col focus:outline-none"
         >
           <div className="border-border flex h-16 shrink-0 items-center justify-between border-b px-5 sm:px-6">
-            <Dialog.Title className="text-surface-ink text-xl font-semibold">
+            <Dialog.Title className="text-ink text-xl font-semibold">
               Filters
             </Dialog.Title>
             <Dialog.Close
               aria-label="Close filters"
-              className="text-surface-ink flex size-10 items-center justify-center rounded-full transition-opacity hover:opacity-70"
+              className="text-ink flex size-10 items-center justify-center rounded-full transition-opacity hover:opacity-70"
             >
               <X className="size-5" strokeWidth={1.75} aria-hidden />
             </Dialog.Close>
@@ -102,9 +102,7 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
 
           <div className="no-scrollbar flex-1 overflow-y-auto px-5 py-6 sm:px-6">
             <section>
-              <h3 className="text-surface-ink text-base font-semibold">
-                Venue Type
-              </h3>
+              <h3 className="text-ink text-base font-semibold">Venue Type</h3>
               <div className="mt-4 flex flex-wrap gap-2.5">
                 {FILTER_VENUE_TYPES.map((type) => (
                   <FilterChip
@@ -125,9 +123,7 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
             <div className="border-border my-7 border-t" />
 
             <section>
-              <h3 className="text-surface-ink text-base font-semibold">
-                Capacity
-              </h3>
+              <h3 className="text-ink text-base font-semibold">Capacity</h3>
               <p className="text-muted-foreground mt-1 text-sm">
                 Showing venues for {draft.capacity[0]} - {draft.capacity[1]}{" "}
                 guests
@@ -148,10 +144,10 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
             <div className="border-border my-7 border-t" />
 
             <section>
-              <h3 className="text-surface-ink text-base font-semibold">
+              <h3 className="text-ink text-base font-semibold">
                 Price per hour (AED)
               </h3>
-              <div className="text-surface-ink mt-3 flex items-center justify-between text-sm font-medium">
+              <div className="text-ink mt-3 flex items-center justify-between text-sm font-medium">
                 <span>{formatAed(draft.price[0])}</span>
                 <span>{formatAed(draft.price[1])}</span>
               </div>
@@ -171,7 +167,7 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
             <div className="border-border my-7 border-t" />
 
             <section>
-              <h3 className="text-surface-ink text-base font-semibold">
+              <h3 className="text-ink text-base font-semibold">
                 Event / Occasion
               </h3>
               <div className="mt-4 flex flex-wrap gap-2.5">
@@ -195,7 +191,7 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
 
             <section className="flex items-center justify-between gap-4">
               <div>
-                <h3 className="text-surface-ink text-base font-semibold">
+                <h3 className="text-ink text-base font-semibold">
                   Verified Only
                 </h3>
                 <p className="text-muted-foreground mt-1 text-sm">
@@ -231,7 +227,7 @@ export function FiltersPanel({ open, onClose, onApply }: FiltersPanelProps) {
             <button
               type="button"
               onClick={clearAll}
-              className="bg-chip-fill text-surface-ink h-11 rounded-lg px-5 text-sm font-medium transition-opacity hover:opacity-80"
+              className="bg-chip-fill text-ink h-11 rounded-lg px-5 text-sm font-medium transition-opacity hover:opacity-80"
             >
               Clear All
             </button>

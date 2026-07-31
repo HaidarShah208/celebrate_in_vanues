@@ -136,8 +136,8 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         </div>
       </div>
 
-      <div className="border-card-hairline bg-surface-white shadow-card-body flex flex-1 flex-col rounded-b-[20px] border px-[15px] pt-[18px] pb-[15px]">
-        <h3 className="text-surface-ink line-clamp-2 min-h-[48px] text-[16px] leading-6 font-semibold">
+      <div className="border-card-hairline bg-panel shadow-card-body flex flex-1 flex-col rounded-b-[20px] border px-[15px] pt-[18px] pb-[15px]">
+        <h3 className="text-ink line-clamp-2 min-h-[48px] text-[16px] leading-6 font-semibold">
           {venue.title}
         </h3>
 
@@ -168,7 +168,7 @@ export function VenueCard({ venue, className }: VenueCardProps) {
         <div className="border-rule-card mt-auto flex items-center justify-between gap-2 border-t pt-[17px]">
           <p className="text-muted-foreground text-xs">
             From{" "}
-            <span className="text-surface-ink text-[13px] font-semibold">
+            <span className="text-ink text-[13px] font-semibold">
               ${venue.pricePerHour}/hour
             </span>
           </p>

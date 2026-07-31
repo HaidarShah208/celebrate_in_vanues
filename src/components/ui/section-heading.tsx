@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 const TITLE_TONES = {
-  light: "text-black",
+  light: "text-ink",
   dark: "text-surface-white",
 } as const;
 const DESCRIPTION_TONES = {
-  light: "text-black",
+  light: "text-ink",
   dark: "text-surface-white/80",
 } as const;
 type SectionHeadingProps = {

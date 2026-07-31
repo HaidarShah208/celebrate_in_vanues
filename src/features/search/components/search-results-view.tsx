@@ -20,7 +20,7 @@ export function SearchResultsView({
   totalCount,
 }: SearchResultsViewProps) {
   return (
-    <div className="bg-surface-white flex min-h-0 flex-1 flex-col">
+    <div className="bg-background flex min-h-0 flex-1 flex-col">
       <SearchHeader query={query} />
       <KeywordFiltersRow query={query} />
       <SpaceCategories query={query} />

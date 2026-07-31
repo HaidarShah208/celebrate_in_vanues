@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { VENUE_CATEGORIES } from "@/features/home/data/categories";
 export function CategoriesSection() {
   return (
-    <section className="bg-white py-14 sm:py-16 lg:py-20">
+    <section className="bg-background py-14 sm:py-16 lg:py-20">
       <div className="container-frame px-4 sm:px-6 lg:px-20">
         <SectionHeading
           title="Find The Best Venue For Any Occasion"

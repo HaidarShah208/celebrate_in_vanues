@@ -35,7 +35,7 @@ export function HeroSearchField({
             {label}
           </span>
           <span className="flex w-full items-center justify-between gap-[5px]">
-            <span className="text-surface-ink text-base leading-6 font-medium">
+            <span className="text-ink text-base leading-6 font-medium">
               {value}
             </span>
             <ChevronDown

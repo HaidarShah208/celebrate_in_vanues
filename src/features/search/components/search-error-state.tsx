@@ -6,7 +6,7 @@ export function SearchErrorState({
   message = "We couldn’t load venues right now. Please try again.",
 }: SearchErrorStateProps) {
   return (
-    <div className="border-border bg-surface-white flex flex-col items-center justify-center rounded-2xl border px-6 py-20 text-center">
+    <div className="border-border bg-panel flex flex-col items-center justify-center rounded-2xl border px-6 py-20 text-center">
       <h2 className="text-foreground text-lg font-semibold">
         Something went wrong
       </h2>

@@ -58,6 +58,11 @@
   --neutral-400: #a3a3a3;
   --neutral-500: #737373;
 
+  /* Theme-aware pair. `--surface-white`/`--surface-ink` stay literal white and
+     black for chrome that sits on photography, so they must not flip. */
+  --panel: #ffffff;
+  --ink: #000000;
+
   --background: var(--surface-white);
   --foreground: var(--surface-ink-soft);
 
@@ -149,7 +154,62 @@
   --venuze-shadow-card-body: 0 2px 3px rgb(0 0 0 / 0.05);
 }
 
+.dark {
+  --panel: #181b21;
+  --ink: #f4f5f7;
+
+  --background: #0f1115;
+  --foreground: #e8eaed;
+
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+
+  --muted: #23262e;
+  --muted-foreground: #9aa1ac;
+
+  --secondary-foreground: var(--foreground);
+  --accent-foreground: var(--surface-ink);
+
+  --neutral-100: #1b1e24;
+  --neutral-200: #2b2f38;
+  --neutral-400: #6b7280;
+  --neutral-500: #9aa1ac;
+
+  --border: var(--neutral-200);
+
+  --surface-cream: #221c12;
+  --surface-cream-alt: #241d13;
+  --surface-blush: #2a1a18;
+  --surface-blush-soft: #33211d;
+
+  --chip-fill: #23262e;
+  --chip-ink: #c3c9d2;
+
+  --card-hairline: #2b2f38;
+  --rule-divider: #2b2f38;
+  --rule-strong: #343945;
+  --rule-card: #343945;
+
+  --field-label: #9aa1ac;
+  --field-arrow: #9aa1ac;
+  --control-chevron: #9aa1ac;
+  --dot-idle: #3a3f4a;
+  --control-idle: #23262e;
+  --control-idle-label: #b6bcc6;
+  --icon-idle: #8b919b;
+
+  --venuze-shadow-card:
+    0 1px 2px 0 rgb(0 0 0 / 0.5), 0 4px 16px 0 rgb(0 0 0 / 0.45);
+  --venuze-shadow-panel: 0 0 34px rgb(0 0 0 / 0.6);
+  --venuze-shadow-control: 0 1px 4px rgb(0 0 0 / 0.6);
+  --venuze-shadow-topbar: 0 4px 10px rgb(0 0 0 / 0.45);
+  --venuze-shadow-card-body: 0 2px 3px rgb(0 0 0 / 0.4);
+}
+
 @theme inline {
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
   --color-brand-tangerine: var(--brand-tangerine);
@@ -322,7 +382,7 @@ body {
   padding: 10px;
   border: 0;
   border-radius: 20px;
-  background-color: var(--surface-white);
+  background-color: var(--panel);
   box-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
   white-space: normal;
 }
@@ -335,13 +395,17 @@ body {
   margin-left: -22px;
   margin-bottom: -14px;
   border: 0;
-  background-color: var(--surface-white);
+  background-color: var(--panel);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
 .leaflet-container {
   font-family: inherit;
   background-color: var(--neutral-100);
+}
+
+.dark .leaflet-tile-pane {
+  filter: brightness(0.7) saturate(0.75);
 }
 
 @keyframes venuze-menu-in {

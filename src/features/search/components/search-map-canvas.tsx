@@ -85,7 +85,7 @@ export default function SearchMapCanvas({ venues }: SearchMapCanvasProps) {
             ) : null}
 
             <div className="mt-[11px] flex flex-col gap-1">
-              <p className="text-surface-ink text-[14px] leading-5 font-semibold tracking-[-0.03em] capitalize">
+              <p className="text-ink text-[14px] leading-5 font-semibold tracking-[-0.03em] capitalize">
                 {venue.title}
               </p>
               <span className="flex items-center gap-[5px]">
@@ -94,7 +94,7 @@ export default function SearchMapCanvas({ venues }: SearchMapCanvasProps) {
                   strokeWidth={1.5}
                   aria-hidden
                 />
-                <span className="text-surface-ink text-[12px] leading-4 tracking-[-0.03em]">
+                <span className="text-ink text-[12px] leading-4 tracking-[-0.03em]">
                   {venue.location}
                 </span>
               </span>

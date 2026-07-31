@@ -2,7 +2,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 const TONES = {
-  light: "border-border bg-surface-white text-muted-foreground hover:bg-muted",
+  light: "border-border bg-panel text-muted-foreground hover:bg-muted",
   dark: "border-surface-white/40 bg-surface-white/10 text-surface-white hover:bg-surface-white/20",
 } as const;
 type CarouselArrowsProps = {

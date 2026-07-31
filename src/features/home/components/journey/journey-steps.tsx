@@ -16,10 +16,10 @@ export function JourneySteps() {
             </div>
 
             <div className={isLast ? undefined : "pb-9 lg:pb-11"}>
-              <h3 className="text-sm leading-[1.3] font-semibold text-black lg:text-2xl">
+              <h3 className="text-ink text-sm leading-[1.3] font-semibold lg:text-2xl">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-[1.7] font-normal text-black md:text-base">
+              <p className="text-ink mt-2 text-sm leading-[1.7] font-normal md:text-base">
                 {step.description}
               </p>
             </div>

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownMini, UserMini } from "@/components/ui/icons";
 import { Logo, LogoMark } from "@/components/ui/logo";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { CompactSearchBar } from "@/features/search/components/compact-search-bar";
 import {
   ACCOUNT_MENU_ITEMS,
@@ -24,7 +25,7 @@ import { cn } from "@/lib/utils";
 import type { SearchQuery } from "@/types/search";
 
 const CONTROL_BASE =
-  "flex h-10 items-center justify-center rounded-lg border border-border bg-surface-white text-sm leading-[140%] font-semibold text-brand-red outline-none";
+  "flex h-10 items-center justify-center rounded-lg border border-border bg-panel text-sm leading-[140%] font-semibold text-brand-red outline-none";
 
 const CHEVRON =
   "text-control-chevron transition-transform duration-200 group-data-[state=open]:rotate-180";
@@ -55,7 +56,7 @@ function MobileAccountMenuContent() {
 
 export function SearchHeader({ query }: SearchHeaderProps) {
   return (
-    <header className="bg-surface-white shadow-topbar sticky top-0 z-30">
+    <header className="bg-panel shadow-topbar sticky top-0 z-30">
       <div className="md:hidden">
         <div className="flex h-[68px] items-center justify-between gap-3 px-4">
           <Link href="/" aria-label="Home" className="shrink-0">
@@ -63,7 +64,10 @@ export function SearchHeader({ query }: SearchHeaderProps) {
           </Link>
 
           <div className="flex min-w-0 items-center gap-3">
-            <span className="text-surface-ink truncate text-base leading-6 font-semibold">
+            <ThemeToggle
+              className={cn(CONTROL_BASE, "size-10 shrink-0 rounded-full")}
+            />
+            <span className="text-ink truncate text-base leading-6 font-semibold">
               {CURRENT_USER.name}
             </span>
 
@@ -104,6 +108,8 @@ export function SearchHeader({ query }: SearchHeaderProps) {
           aria-label="Account"
           className="flex shrink-0 items-center gap-2.75"
         >
+          <ThemeToggle className={cn(CONTROL_BASE, "w-11")} />
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button

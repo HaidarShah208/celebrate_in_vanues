@@ -51,7 +51,7 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
               }}
               placeholder="Add keywords..."
               aria-label="Add keywords"
-              className="text-surface-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 text-sm outline-none"
+              className="text-ink placeholder:text-muted-foreground h-full w-full bg-transparent pr-3 text-sm outline-none"
             />
           </label>
 
@@ -62,7 +62,7 @@ export function KeywordFiltersRow({ query }: KeywordFiltersRowProps) {
             disabled={isPending}
             aria-expanded={filtersOpen}
             onClick={() => setFiltersOpen(true)}
-            className="text-surface-ink flex shrink-0 items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
+            className="text-ink flex shrink-0 items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
           >
             <SlidersHorizontal className="size-[18px]" aria-hidden />
             Filters

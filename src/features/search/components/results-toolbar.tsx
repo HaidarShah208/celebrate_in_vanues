@@ -20,7 +20,7 @@ import { formatLocationLabel } from "@/features/search/lib/search-params";
 import type { ActiveFilterChip, SearchQuery } from "@/types/search";
 
 const PILL_BASE =
-  "border-border text-surface-ink flex h-8 shrink-0 items-center rounded-full border bg-surface-white text-[13px] leading-none";
+  "border-border text-ink flex h-8 shrink-0 items-center rounded-full border bg-panel text-[13px] leading-none";
 
 type ResultsToolbarProps = {
   query: SearchQuery;
@@ -62,15 +62,15 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
 
   return (
     <div className="pt-4 pb-4">
-      <div className="flex items-center gap-x-4">
-        <h1 className="text-surface-ink shrink-0 text-sm">
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-x-4 sm:gap-y-0">
+        <h1 className="text-ink shrink-0 text-sm">
           {totalCount.toLocaleString()}{" "}
           <span className="font-semibold">{categoryLabel(query.category)}</span>{" "}
           near {formatLocationLabel(query.location || "London")}
         </h1>
 
         {chips.length > 0 ? (
-          <ul className="no-scrollbar flex min-w-0 flex-1 items-center gap-2 overflow-x-auto">
+          <ul className="no-scrollbar flex w-full min-w-0 items-center gap-2 overflow-x-auto sm:w-auto sm:flex-1">
             {chips.map((chip) => (
               <li key={chip.id} className="shrink-0">
                 <button
@@ -92,7 +92,7 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
             <button
               type="button"
               aria-label="Sort results"
-              className={`${PILL_BASE} group ml-auto shrink-0 gap-1.5 px-3.5 outline-none`}
+              className={`${PILL_BASE} group shrink-0 gap-1.5 px-3.5 outline-none sm:ml-auto`}
             >
               <ArrowUpDown className="size-3.5 shrink-0" aria-hidden />
               Sort by: {sortLabel(query.sort)}

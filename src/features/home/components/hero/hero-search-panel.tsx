@@ -37,10 +37,10 @@ export function HeroSearchPanel() {
 
   return (
     <div className="mx-auto w-full max-w-[1054px]">
-      <div className="bg-surface-white rounded-lg p-4 lg:bg-transparent lg:p-0">
+      <div className="bg-panel rounded-lg p-4 lg:bg-transparent lg:p-0">
         <HeroSearchTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <div className="lg:bg-surface-white mt-2 lg:-mt-[17px] lg:h-[100px] lg:rounded-lg lg:px-[14px] lg:py-0">
+        <div className="lg:bg-panel mt-2 lg:-mt-[17px] lg:h-[100px] lg:rounded-lg lg:px-[14px] lg:py-0">
           <div className="flex h-full flex-col gap-2 lg:flex-row lg:items-center lg:gap-[10px]">
             <div className="divide-border flex flex-col divide-y lg:contents lg:divide-y-0">
               <HeroSearchField
