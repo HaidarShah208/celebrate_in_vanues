@@ -36,11 +36,11 @@ export function HeroSearchPanel() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[1054px]">
+    <div className="mx-auto w-full max-w-263.5">
       <div className="bg-panel rounded-lg p-4 lg:bg-transparent lg:p-0">
         <HeroSearchTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <div className="lg:bg-panel mt-2 lg:-mt-[17px] lg:h-[100px] lg:rounded-lg lg:px-[14px] lg:py-0">
+        <div className="lg:bg-panel mt-2 lg:-mt-4.25 lg:h-25 lg:rounded-lg lg:px-3.5 lg:py-0">
           <div className="flex h-full flex-col gap-2 lg:flex-row lg:items-center lg:gap-[10px]">
             <div className="divide-border flex flex-col divide-y lg:contents lg:divide-y-0">
               <HeroSearchField
@@ -68,7 +68,7 @@ export function HeroSearchPanel() {
               onClick={handleSearch}
               disabled={isPending}
               aria-busy={isPending}
-              className="bg-brand-red text-surface-white flex h-[50px] w-full shrink-0 items-center justify-center gap-[10px] rounded-lg px-[14px] text-base leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 disabled:opacity-70 lg:h-[61px] lg:w-[147px] lg:text-2xl"
+              className="bg-brand-red text-surface-white flex h-12.5 w-full shrink-0 items-center justify-center gap-2.5 rounded-lg px-3.5 text-base leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 disabled:opacity-70 lg:h-15.25 lg:w-36.75 lg:text-2xl"
             >
               <Search
                 className="size-5 shrink-0 lg:size-6"
