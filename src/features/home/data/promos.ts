@@ -7,7 +7,7 @@ export const GROW_BUSINESS_PROMO: PromoBannerContent = {
     "Showcase your services to thousands of event organizers and creators searching for talent like yours.",
   actionLabel: "Join as a Vendor",
   illustration: businessVenueIllustration,
-  curveArrowClassName: "right-[563px] bottom-[74px]",
+  curveArrowClassName: "right-[563px] bottom-[70px]",
 };
 export const LIST_VENUE_PROMO: PromoBannerContent = {
   title: "Turn Your Venue into a Destination",

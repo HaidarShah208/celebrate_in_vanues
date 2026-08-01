@@ -27,6 +27,7 @@ export function HeroSearchTabs({
         "lg:bg-panel lg:shadow-panel lg:mx-auto lg:h-[55px] lg:w-[264px] lg:gap-[10px] lg:rounded-lg lg:p-[7px]",
       )}
     >
+      
       {HERO_SEARCH_TABS.map(({ id, label }) => {
         const Icon = TAB_ICONS[id];
         const isActive = id === activeTab;
