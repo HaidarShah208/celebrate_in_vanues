@@ -26,7 +26,7 @@ export function PromoBanner({
         className,
       )}
     >
-      <div className="flex flex-col items-center pe-10 lg:min-h-75 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+      <div className="flex flex-col items-center lg:pe-10 lg:min-h-75 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
         <div className="w-full min-w-0 flex-1 px-6 pt-10 text-center sm:px-10 sm:pt-12 lg:py-8 lg:pl-26 lg:text-left">
           <h2 className="text-surface-white mx-auto max-w-140 text-[28px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[36px] lg:mx-0 lg:text-[44px]">
             {title}
