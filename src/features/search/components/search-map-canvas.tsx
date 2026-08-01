@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { divIcon, latLngBounds } from "leaflet";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   MapContainer,
   Marker,
@@ -22,24 +22,42 @@ const pinIcon = divIcon({
 type ViewportSyncProps = {
   venues: readonly SearchVenue[];
 };
+const RESIZE_SETTLE_MS = 150;
 function MapViewportSync({ venues }: ViewportSyncProps) {
   const map = useMap();
   const boundsKey = venues.map((venue) => venue.id).join("|");
-  useEffect(() => {
-    if (venues.length === 0) return;
+  const venuesRef = useRef(venues);
+  venuesRef.current = venues;
+  const fitToVenues = useCallback(() => {
+    const current = venuesRef.current;
+    if (current.length === 0) return;
     const bounds = latLngBounds(
-      venues.map((venue) => [venue.lat, venue.lng] as [number, number]),
+      current.map((venue) => [venue.lat, venue.lng] as [number, number]),
     );
     map.fitBounds(bounds, { padding: [56, 56], maxZoom: 14 });
-  }, [map, boundsKey]);
+  }, [map]);
+  useEffect(() => {
+    fitToVenues();
+  }, [fitToVenues, boundsKey]);
   useEffect(() => {
     const container = map.getContainer();
+    let settleTimer = 0;
     const observer = new ResizeObserver(() => {
-      map.invalidateSize();
+      window.clearTimeout(settleTimer);
+      // A drag-resize fires this every frame, and Leaflet's default recentring
+      // pan is animated. Wait for the drag to settle, then resize without
+      // panning and reframe the results for the new aspect ratio.
+      settleTimer = window.setTimeout(() => {
+        map.invalidateSize({ pan: false, debounceMoveend: true });
+        fitToVenues();
+      }, RESIZE_SETTLE_MS);
     });
     observer.observe(container);
-    return () => observer.disconnect();
-  }, [map]);
+    return () => {
+      window.clearTimeout(settleTimer);
+      observer.disconnect();
+    };
+  }, [map, fitToVenues]);
   return null;
 }
 type SearchMapCanvasProps = {

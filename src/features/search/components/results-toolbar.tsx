@@ -70,7 +70,7 @@ export function ResultsToolbar({ query, totalCount }: ResultsToolbarProps) {
         </h1>
 
         {chips.length > 0 ? (
-          <ul className="no-scrollbar flex w-full min-w-0 items-center gap-2 overflow-x-auto sm:w-auto sm:flex-1">
+          <ul className="no-scrollbar scroller-contain flex w-full min-w-0 items-center gap-2 overflow-x-auto sm:w-auto sm:flex-1">
             {chips.map((chip) => (
               <li key={chip.id} className="shrink-0">
                 <button
