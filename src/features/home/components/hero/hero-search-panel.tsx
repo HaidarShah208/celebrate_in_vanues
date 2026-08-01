@@ -68,7 +68,7 @@ export function HeroSearchPanel() {
               onClick={handleSearch}
               disabled={isPending}
               aria-busy={isPending}
-              className="bg-brand-red text-surface-white flex h-12.5 w-full shrink-0 items-center justify-center gap-2.5 rounded-lg px-3.5 text-base leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 disabled:opacity-70 lg:h-15.25 lg:w-36.75 lg:text-2xl"
+              className="bg-brand-red text-surface-white flex h-12.5 w-full shrink-0 items-center justify-center gap-2.5 rounded-lg px-3.5 text-base leading-[120%] font-semibold tracking-[-0.02em] transition-opacity hover:opacity-90 disabled:opacity-70 lg:h-15 lg:w-36.75 lg:text-2xl"
             >
               <Search
                 className="size-5 shrink-0 lg:size-6"

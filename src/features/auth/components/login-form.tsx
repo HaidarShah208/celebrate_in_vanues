@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
+import { useLoginMutation } from "@/features/auth/hooks/use-login-mutation";
 import {
   type LoginInput,
   loginSchema,
@@ -17,17 +18,13 @@ type LoginFormProps = {
   nextPath: string;
 };
 
-type LoginErrorResponse = {
-  error?: string;
-};
-
 const INPUT_CLASS =
   "border-border bg-panel text-ink placeholder:text-muted-foreground focus:border-brand-red focus:ring-brand-red/15 h-12 w-full rounded-xl border pr-12 pl-11 text-sm outline-none transition focus:ring-4";
 
 export function LoginForm({ nextPath }: LoginFormProps) {
   const router = useRouter();
+  const loginMutation = useLoginMutation();
   const [showPassword, setShowPassword] = useState(false);
-  const [serverError, setServerError] = useState("");
   const {
     register,
     handleSubmit,
@@ -41,27 +38,13 @@ export function LoginForm({ nextPath }: LoginFormProps) {
   });
 
   const onSubmit = async (values: LoginInput) => {
-    setServerError("");
-
+    loginMutation.reset();
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      const result = (await response
-        .json()
-        .catch(() => ({}))) as LoginErrorResponse;
-
-      if (!response.ok) {
-        setServerError(result.error ?? "Unable to sign in. Try again.");
-        return;
-      }
-
+      await loginMutation.mutateAsync(values);
       router.replace(nextPath);
       router.refresh();
     } catch {
-      setServerError("Unable to connect. Check your network and try again.");
+      // The mutation exposes its normalized error below the fields.
     }
   };
 
@@ -149,21 +132,21 @@ export function LoginForm({ nextPath }: LoginFormProps) {
         ) : null}
       </div>
 
-      {serverError ? (
+      {loginMutation.error ? (
         <div
           role="alert"
           className="border-brand-red/25 bg-surface-blush-soft text-brand-red rounded-xl border px-4 py-3 text-sm"
         >
-          {serverError}
+          {loginMutation.error.message}
         </div>
       ) : null}
 
       <Button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || loginMutation.isPending}
         className="h-12 w-full rounded-xl text-base font-semibold"
       >
-        {isSubmitting ? (
+        {isSubmitting || loginMutation.isPending ? (
           <>
             <LoaderCircle className="size-4 animate-spin" aria-hidden />
             Signing in...

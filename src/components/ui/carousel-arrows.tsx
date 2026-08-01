@@ -28,7 +28,7 @@ export function CarouselArrows({
     TONES[tone],
   );
   return (
-    <div className={cn("flex  items-center justify-end gap-3", className)}>
+    <div className={cn("flex items-center justify-end gap-3", className)}>
       <button
         type="button"
         aria-label={`Previous ${label}`}
@@ -36,7 +36,7 @@ export function CarouselArrows({
         disabled={!canScrollBack}
         className={buttonClass}
       >
-        <ChevronLeft className="size-5 " aria-hidden />
+        <ChevronLeft className="size-5" aria-hidden />
       </button>
       <button
         type="button"

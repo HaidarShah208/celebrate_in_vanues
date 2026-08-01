@@ -3,9 +3,8 @@ import axios, {
   type AxiosInstance,
   type AxiosRequestConfig,
 } from "axios";
-import { env } from "@/lib/env";
 export const apiClient: AxiosInstance = axios.create({
-  baseURL: env.NEXT_PUBLIC_API_URL,
+  baseURL: "/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -15,10 +14,12 @@ apiClient.interceptors.response.use(
   (response) => response,
   (
     error: AxiosError<{
+      error?: string;
       message?: string;
     }>,
   ) => {
     const message =
+      error.response?.data?.error ??
       error.response?.data?.message ??
       error.message ??
       "Something went wrong. Please try again.";

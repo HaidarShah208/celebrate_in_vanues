@@ -30,4 +30,4 @@ export const SPACE_CATEGORIES = [
   { id: "meeting", label: "Meeting", icon: meetingIcon },
 ] as const satisfies readonly SpaceCategory[];
 export type SpaceCategoryId = (typeof SPACE_CATEGORIES)[number]["id"];
-export const DEFAULT_SPACE_CATEGORY: SpaceCategoryId = "photo-studio";
+export const DEFAULT_SPACE_CATEGORY: SpaceCategoryId = "all";

@@ -2,8 +2,6 @@ import { Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownMini, UserMini } from "@/components/ui/icons";
@@ -77,8 +75,6 @@ export function HeroTopBar() {
 function AccountMenu() {
   return (
     <DropdownMenuContent align="end" className="min-w-50">
-    
-      <DropdownMenuSeparator />
       <LogoutMenuItem />
     </DropdownMenuContent>
   );

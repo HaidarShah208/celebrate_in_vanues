@@ -42,7 +42,7 @@ export function parseSearchParams(input: SearchParamsInput): SearchQuery {
     date: firstValue(input[SEARCH_PARAM_KEYS.date]) || "anytime",
     guests: firstValue(input[SEARCH_PARAM_KEYS.guests]),
     type,
-    category: firstValue(input[SEARCH_PARAM_KEYS.category]) || "photo-studio",
+    category: firstValue(input[SEARCH_PARAM_KEYS.category]) || "all",
     q: firstValue(input[SEARCH_PARAM_KEYS.q]),
     sort: firstValue(input[SEARCH_PARAM_KEYS.sort]) || "recommended",
   };

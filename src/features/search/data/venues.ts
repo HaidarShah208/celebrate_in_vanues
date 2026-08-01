@@ -190,10 +190,7 @@ export async function getSearchVenues(
         : all.filter((venue) => venue.city === "london");
   }
   if (query.category && query.category !== "all") {
-    const matched = venues.filter((venue) => venue.category === query.category);
-    if (matched.length > 0) {
-      venues = matched;
-    }
+    venues = venues.filter((venue) => venue.category === query.category);
   }
   if (query.q) {
     const needle = query.q.toLowerCase();

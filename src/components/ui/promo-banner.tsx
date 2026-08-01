@@ -26,13 +26,13 @@ export function PromoBanner({
         className,
       )}
     >
-      <div className="flex flex-col items-center lg:min-h-[300px] lg:flex-row lg:items-end pe-10 lg:justify-between lg:gap-8">
-        <div className="px-6 pt-10 text-center sm:px-10 sm:pt-12 lg:py-8 lg:pl-26 lg:text-left">
-          <h2 className="text-surface-white mx-auto max-w-[560px] text-[28px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[36px] lg:mx-0 lg:text-[44px]">
+      <div className="flex flex-col items-center pe-10 lg:min-h-75 lg:flex-row lg:items-end lg:justify-between lg:gap-8">
+        <div className="w-full min-w-0 flex-1 px-6 pt-10 text-center sm:px-10 sm:pt-12 lg:py-8 lg:pl-26 lg:text-left">
+          <h2 className="text-surface-white mx-auto max-w-140 text-[28px] leading-[1.2] font-semibold tracking-[-0.02em] sm:text-[36px] lg:mx-0 lg:text-[44px]">
             {title}
           </h2>
 
-          <p className="text-surface-white mx-auto mt-4 max-w-[1000px] text-sm leading-[1.6] font-medium sm:text-xl lg:mx-0">
+          <p className="text-surface-white mx-auto mt-4 w-full max-w-250 text-sm leading-[1.6] font-medium sm:text-xl lg:mx-0">
             {description}
           </p>
 
@@ -64,7 +64,7 @@ export function PromoBanner({
           alt=""
           aria-hidden
           className={cn(
-            "pointer-events-none absolute hidden w-[199px] xl:block",
+            "pointer-events-none absolute hidden w-49.75 xl:block",
             curveArrowClassName,
           )}
         />

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import brandOrange from "@/assets/brandOrange.png";
+import brandWhite from "@/assets/brandWhite.png";
 import logoMark from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 type LogoMarkProps = {
@@ -20,27 +22,26 @@ export function LogoMark({ priority = false, className }: LogoMarkProps) {
 }
 type LogoProps = {
   priority?: boolean;
-  tone?: "light" | "ink";
+  wordmark?: "orange" | "white";
   href?: string;
   className?: string;
 };
 export function Logo({
   priority,
-  tone = "light",
+  wordmark = "orange",
   href = "/",
   className,
 }: LogoProps) {
   const content = (
     <>
       <LogoMark priority={priority} />
-      <span
-        className={cn(
-          "text-[26px] leading-none font-semibold tracking-[-0.02em]",
-          tone === "ink" ? "text-brand-red" : "text-surface-white",
-        )}
-      >
-        venuze
-      </span>
+      <Image
+        src={wordmark === "white" ? brandOrange : brandWhite}
+        alt="Venuze"
+        priority={priority}
+        sizes="125px"
+        className="h-auto w-31.25 shrink-0"
+      />
     </>
   );
   if (!href) {

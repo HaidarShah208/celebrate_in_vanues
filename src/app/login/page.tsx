@@ -29,7 +29,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         <ThemeToggle className="border-border bg-panel text-ink absolute top-5 right-5 flex size-10 items-center justify-center rounded-full border shadow-sm" />
 
         <div className="w-full max-w-115">
-          <Logo priority tone="ink" href={undefined} />
+          <Logo priority href={undefined} />
 
           <div className="mt-12">
             <p className="text-brand-red text-sm font-semibold">Welcome back</p>
@@ -42,8 +42,6 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           </div>
 
           <LoginForm nextPath={safeNextPath(params.next)} />
-
-        
         </div>
       </section>
 

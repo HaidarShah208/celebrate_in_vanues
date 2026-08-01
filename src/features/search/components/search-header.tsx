@@ -114,7 +114,7 @@ export function SearchHeader({ query }: SearchHeaderProps) {
         <Link href="/" aria-label="Home" className="shrink-0 lg:hidden">
           <LogoMark priority className="w-10" />
         </Link>
-        <Logo priority tone="ink" className="hidden shrink-0 lg:flex" />
+        <Logo priority wordmark="white" className="hidden shrink-0 lg:flex" />
 
         <CompactSearchBar query={query} className="mx-auto min-w-0" />
 
