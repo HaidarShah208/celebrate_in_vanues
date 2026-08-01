@@ -74,11 +74,11 @@ export function CompactSearchBar({ query, className }: CompactSearchBarProps) {
   return (
     <div
       className={cn(
-        "drop-shadow-control bg-panel flex h-11 w-full max-w-107.5 items-center rounded-[10px] pr-1.75 pl-6.25",
+        "drop-shadow-control bg-panel flex h-11 w-full max-w-107.5 items-center rounded-[10px] pr-1.75 pl-4 md:pl-6.25",
         className,
       )}
     >
-      <div className="flex min-w-0 flex-1 items-center justify-center gap-7.5">
+      <div className="flex min-w-0 flex-1 items-center justify-center gap-3 md:gap-7.5">
         {segments.map((segment, index) => (
           <Fragment key={segment.id}>
             {index > 0 ? (

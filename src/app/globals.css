@@ -282,6 +282,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* The layout is mobile-first and never scrolls sideways, so clip instead of
+     letting a stray overflow drag the whole page. `clip` keeps the viewport as
+     the scrollport, so sticky headers still work. */
+  overflow-x: clip;
 }
 
 body {
