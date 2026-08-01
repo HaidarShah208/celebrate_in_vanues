@@ -2,7 +2,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 const TONES = {
-  light: "border-border bg-panel text-muted-foreground hover:bg-muted",
+  light: "border-border shadow-md bg-[#F4F4F4] text-black hover:bg-[#F4F4F4]",
   dark: "border-surface-white/40 bg-surface-white/10 text-surface-white hover:bg-surface-white/20",
 } as const;
 type CarouselArrowsProps = {
@@ -24,11 +24,11 @@ export function CarouselArrows({
   className,
 }: CarouselArrowsProps) {
   const buttonClass = cn(
-    "flex size-12 items-center justify-center rounded-full border transition-colors disabled:pointer-events-none disabled:opacity-40",
+    "flex size-12 items-center justify-center text-black rounded-full border shadow-md bg-[#F4F4F4] text-black hover:bg-[#F4F4F4] transition-colors disabled:pointer-events-none disabled:opacity-40",
     TONES[tone],
   );
   return (
-    <div className={cn("flex items-center justify-end gap-3", className)}>
+    <div className={cn("flex  items-center justify-end gap-3", className)}>
       <button
         type="button"
         aria-label={`Previous ${label}`}
@@ -36,7 +36,7 @@ export function CarouselArrows({
         disabled={!canScrollBack}
         className={buttonClass}
       >
-        <ChevronLeft className="size-5" aria-hidden />
+        <ChevronLeft className="size-5 " aria-hidden />
       </button>
       <button
         type="button"
